@@ -7,10 +7,27 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def login
+  @user = User.find_by_email(params[:email])
+   if @user && @user.authenticate(params[:password])
+     session[:user_id] = @user.id
+     redirect_to user_path(@user)
+   else
+     render :new, notice: 'Invalid Login'
+   end
+ end
+
+ def logout
+   reset_session
+   redirect_to new_user_path, notice: 'You have been logged out'
+ end
+
+
   # GET /users/1
   # GET /users/1.json
   def show
-  end
+    @user = current_user
+  end 
 
   # GET /users/new
   def new
@@ -25,6 +42,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+
 
     respond_to do |format|
       if @user.save
@@ -69,6 +87,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).premit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end

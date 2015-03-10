@@ -1,6 +1,9 @@
 <h1>Editing User</h1>
 
-<%= render 'form' %>
+<%= form_for(@user) do |form| %>
+	<%= render form %>
+	<%= form.submit "update user" %>
+<% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
