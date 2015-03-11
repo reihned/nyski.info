@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
 
 	validates :email, :password_digest, presence: :true
 	validates :email, uniqueness: :true
+	validates :email, email_format: { message: "incorrect email format" }
 
 end
