@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'users#new'
   resources :users
 
   post '/login' => :login, controller: :users
