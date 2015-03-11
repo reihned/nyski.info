@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
@@ -90,5 +89,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def must_be_admin
+      unless current_user && current_user.admin?
+        redirect_to data_form_path, notice: "enter your data"
+      end
     end
 end

@@ -5,3 +5,11 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<% if current_user.admin? %>
+	<%= link_to new_ski_location_path 'Add new location' %>
+	<h1>Enter new data here!</h1>
+	<%= form_for(@ski_location) do |form| %>
+	<%= render data_form %>
+	<%= form.submit "Submit" %>
+<% end %>
+<% end %>

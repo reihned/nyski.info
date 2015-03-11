@@ -1,0 +1,25 @@
+ <div class="field">
+   <%= form.label :name %><br>
+   <%= form.name_field :name %>
+ </div>
+  <div class="field">
+   <%= form.label :url %><br>
+   <%= form.text_field :url %>
+ </div> 
+ <div class="field">
+   <%= form.label :address %><br>
+   <%= form.text_field :address %>
+ </div>
+  <div class="field">
+   <%= form.label :latitude %><br>
+   <%= form.text_field :latitude %>
+ </div>
+ <div class="field">
+   <%= form.label :longitude %><br>
+   <%= form.text_field :longitude %>
+ </div>
+ <div class="field">
+   <%= form.label :type %><br>
+   <%= form.select :type, options_for_select([["Mountain", "mountain"], ["Resort", "resort"], ["Hotel", "hotel"]]) %>
+ </div>
+<div class="field">
