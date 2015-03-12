@@ -33,8 +33,13 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'validates_email_format_of'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+gem 'httparty'
+
+group :production do
+  # Use Unicorn as the app server
+  gem 'unicorn'
+  gem 'unicorn-rails'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
