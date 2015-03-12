@@ -1,0 +1,2 @@
+module SkiLocationsHelper
+end

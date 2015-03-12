@@ -1,0 +1,31 @@
+<h1>Listing Locations</h1>
+
+<%= link_to 'Add new location', new_ski_location_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Name</th>
+      <th colspan="3">Address</th>
+      <th colspan="3">URL</th>
+      <th colspan="3">Longitude</th>
+      <th colspan="3">Latitude</th>
+      <th colspan="3">Category</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ski_locations.each do |ski_location| %>
+      <tr>
+          <td><%= ski_location.name %></td>
+          <td><%= ski_location.address %></td>
+          <td><%= ski_location.url %></td>
+          <td><%= ski_location.longitude %></td>
+          <td><%= ski_location.latitude %></td>
+          <td><%= ski_location.category %></td>
+          <td><%= link_to 'Edit', edit_ski_location_path(ski_location) %></td>
+          <td><%= link_to 'Destroy', ski_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
