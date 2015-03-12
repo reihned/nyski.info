@@ -17,3 +17,22 @@ funny = User.create({
 	password: 'what',
 	admin: false
 	})
+
+ski_location = Ski_location.create({
+	name: 'Mountain of Awesomeness',
+	address: 'Your Mom',
+	url: 'www.awesome.com',
+	longitude: '123',
+	latitude: '321',
+	category: 'mountain'
+	})
+
+trip = Trip.create({
+	start_date: '2/2/1985',
+	end_date: '2/4/1985',
+	status: 'pending',
+	user_id: 1,
+	name: 'Fantastic Trip',
+	description: 'Totally awesome!',
+	ski_location_id: ski_location.id
+	})

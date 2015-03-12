@@ -1,0 +1,23 @@
+<h1>Create a trip for your dummy friends</h1>
+<%= form_for(@trip) do |f| %>
+ <div class="field">
+   <%= f.label :name %><br>
+   <%= f.text_field :name %>
+ </div>
+ <div class="field">
+   <%= f.label :description %><br>
+   <%= f.text_field :description %>
+ </div>  
+ <div class="field">
+   <%= f.label :start_date %><br>
+   <%= f.date :start_date %>
+ </div>
+ <div class="field">
+   <%= f.label :end_date %><br>
+   <%= f.date :end_date %>
+ </div>
+ <div class="actions">
+   <%= form.submit "create" %>
+ </div>
+<%= end %>
+
