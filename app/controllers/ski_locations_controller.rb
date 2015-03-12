@@ -25,7 +25,6 @@ class SkiLocationsController < ApplicationController
 	end
 
 	def edit
-
 	end
 
   def update
@@ -49,6 +48,7 @@ class SkiLocationsController < ApplicationController
   end
 
   private
+  
   def set_ski_location
   	@ski_location = Ski_location.find(params[:id])
   end
@@ -56,4 +56,5 @@ class SkiLocationsController < ApplicationController
   def ski_location_params
     params.require(:ski_location).permit(:name, :url, :latitude, :longitude, :address, :category)
   end
+
 end

@@ -7,4 +7,4 @@ var SkiLocation = function(args) {
 	this.longitude = args.longitude;
 	this.latitude = args.latitude;
 	this.category = args.category
-};
+}
