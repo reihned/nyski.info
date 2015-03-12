@@ -23,8 +23,7 @@
           <td><%= ski_location.longitude %></td>
           <td><%= ski_location.latitude %></td>
           <td><%= ski_location.category %></td>
-          <td><%= link_to 'Show', ski_location %></td>
-          <td><%= link_to 'Edit', edit_user_path(ski_location) %></td>
+          <td><%= link_to 'Edit', edit_ski_location_path(ski_location) %></td>
           <td><%= link_to 'Destroy', ski_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
