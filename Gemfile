@@ -35,6 +35,9 @@ gem 'validates_email_format_of'
 
 gem 'httparty'
 
+gem 'geokit', '~> 1.9.0'
+gem 'geokit-rails'
+
 group :production do
   # Use Unicorn as the app server
   gem 'unicorn'
