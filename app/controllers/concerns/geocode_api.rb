@@ -1,3 +1,7 @@
+### THIS CODE IS REDUNDANT NOW THAT WE USE GEOKIT ###
+### THIS WILL BE REMOVED IN A FUTURE ITERATION ###
+### DO NOT INCLUDE ###
+
 module GeocodeApi
   # https://developers.google.com/maps/documentation/geocoding/
   extend ActiveSupport::Concern
