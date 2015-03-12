@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete_all
+Trip.delete_all
+Ski_location.delete_all
+
+
+
 admin = User.create({
 	email: 'admin@nyski.club',
 	password: 'trippingdonkeys',
@@ -31,7 +37,7 @@ trip = Trip.create({
 	start_date: '2/2/1985',
 	end_date: '2/4/1985',
 	status: 'pending',
-	user_id: 1,
+	user_id: admin.id,
 	name: 'Fantastic Trip',
 	description: 'Totally awesome!',
 	ski_location_id: ski_location.id
