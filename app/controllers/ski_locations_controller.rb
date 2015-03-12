@@ -1,4 +1,4 @@
-class Ski_locations_controller < ActiveController
+class SkiLocationsController < ApplicationController
 	# before_action :require_something_that_is_admin_login!
 
 	def index
@@ -6,7 +6,7 @@ class Ski_locations_controller < ActiveController
 	end
 
 	def new
-		 @ski_location = Ski_location.new
+		@ski_location = Ski_location.new
 	end
 
 	def create
@@ -22,7 +22,6 @@ class Ski_locations_controller < ActiveController
       end
     end
 	end
-
 
 	def edit
 
@@ -53,6 +52,6 @@ class Ski_locations_controller < ActiveController
   private
 
   def ski_location_params
-    params.require(:ski_location).permit(:name, :url, :latitude, :longitude, :address, :type)
+    params.require(:ski_location).permit(:name, :url, :latitude, :longitude, :address, :category)
   end
 end
