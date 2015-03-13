@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.delete_all
-Trip.delete_all
-SkiLocation.delete_all
+# User.delete_all
+# Trip.delete_all
+# SkiLocation.delete_all
 
 
 
@@ -52,7 +52,7 @@ locations = SkiLocation.create([
 		},
 		{
 			name: 			'Eagle Rock Resort',
-			address: 		'1 Country Club Drive, Hazle Township, PA 18202',
+			address: 		'1 Country Club Drive 18202',
 			url: 				'http://www.eaglerockresort.com/leisure-activities/ski/',
 			category: 	'mountain',
 		}
