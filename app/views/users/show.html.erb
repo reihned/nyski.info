@@ -4,8 +4,9 @@
  <%= @user.email %>
 </p>
 
+<%= link_to 'Show trips', trips_path %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% if current_user.admin? %>
-	<%= link_to 'Add new location', new_ski_location_path %>
+	<%= link_to 'Add new location', new_ski_location_path %> |
 	<%= link_to 'Show ski locations', ski_locations_path  %>
 <% end %>
