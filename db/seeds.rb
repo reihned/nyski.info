@@ -34,7 +34,7 @@ ski_location = SkiLocation.create({
 trip = Trip.create({
 	start_date: '2/2/1985',
 	end_date: '2/4/1985',
-	status: 'pending',
+	status: 0,
 	user_id: admin.id,
 	name: 'Fantastic Trip',
 	description: 'Totally awesome!',
