@@ -3,7 +3,8 @@ class SkiLocation < ActiveRecord::Base
                    :default_formula => :sphere,
                    :distance_field_name => :distance,
                    :lat_column_name => :latitude,
-                   :lng_column_name => :longitude
+                   :lng_column_name => :longitude,
+                   :auto_geocode=>{:field=>:address}
 
   has_many :trips
 end

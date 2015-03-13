@@ -13,20 +13,20 @@ if defined? Geokit
     # These setting can be nil if not needed, otherwise, a valid URI must be
     # filled in at a minimum.  If the proxy requires authentication, the username
     # and password can be provided as well.
-    Geokit::Geocoders::proxy = 'https://user:password@host:port'
+    # Geokit::Geocoders::proxy = 'https://user:password@host:port'
 
     # This is your yahoo application key for the Yahoo Geocoder.
     # See http://developer.yahoo.com/faq/index.html#appid
     # and http://developer.yahoo.com/maps/rest/V1/geocode.html
-    Geokit::Geocoders::YahooGeocoder.key = 'REPLACE_WITH_YOUR_YAHOO_KEY'
-    Geokit::Geocoders::YahooGeocoder.secret = 'REPLACE_WITH_YOUR_YAHOO_SECRET'
+    # Geokit::Geocoders::YahooGeocoder.key = 'REPLACE_WITH_YOUR_YAHOO_KEY'
+    # Geokit::Geocoders::YahooGeocoder.secret = 'REPLACE_WITH_YOUR_YAHOO_SECRET'
 
     # This is your Google Maps geocoder keys (all optional).
     # See http://www.google.com/apis/maps/signup.html
     # and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
-    Geokit::Geocoders::GoogleGeocoder.client_id = ''
-    Geokit::Geocoders::GoogleGeocoder.cryptographic_key = ''
-    Geokit::Geocoders::GoogleGeocoder.channel = ''
+    # Geokit::Geocoders::GoogleGeocoder.client_id = ''
+    # Geokit::Geocoders::GoogleGeocoder.cryptographic_key = ''
+    # Geokit::Geocoders::GoogleGeocoder.channel = ''
 
     # You can also use the free API key instead of signed requests
     # See https://developers.google.com/maps/documentation/geocoding/#api_key
@@ -36,7 +36,7 @@ if defined? Geokit
     # The domain from which the current user is being directed will automatically be updated for Geokit via
     # the GeocoderControl class, which gets it's begin filter mixed into the ActionController.
     # You define these keys with a Hash as follows:
-    #Geokit::Geocoders::google = { 'rubyonrails.org' => 'RUBY_ON_RAILS_API_KEY', 'ruby-docs.org' => 'RUBY_DOCS_API_KEY' }
+    # Geokit::Geocoders::google = { 'rubyonrails.org' => 'RUBY_ON_RAILS_API_KEY', 'ruby-docs.org' => 'RUBY_DOCS_API_KEY' }
 
     # This is your username and password for geocoder.us.
     # To use the free service, the value can be set to nil or false.  For
@@ -56,14 +56,14 @@ if defined? Geokit
     # This is your username key for geonames.
     # To use this service either free or premium, you must register a key.
     # See http://www.geonames.org
-    Geokit::Geocoders::GeonamesGeocoder.key = 'KEY'
+    # Geokit::Geocoders::GeonamesGeocoder.key = 'KEY'
 
     # Most other geocoders need either no setup or a key
     Geokit::Geocoders::BingGeocoder.key = ''
     Geokit::Geocoders::MapQuestGeocoder.key = ''
     Geokit::Geocoders::YandexGeocoder.key = ''
-    Geokit::Geocoders::MapboxGeocoder.key = 'ACCESS_TOKEN'
-    Geokit::Geocoders::OpencageGeocoder.key = 'some_api_key'
+    # Geokit::Geocoders::MapboxGeocoder.key = 'ACCESS_TOKEN'
+    # Geokit::Geocoders::OpencageGeocoder.key = 'some_api_key'
 
     # Geonames has a free service and a premium service, each using a different URL
     # GeonamesGeocoder.premium = true will use http://ws.geonames.net (premium)
