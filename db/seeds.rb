@@ -28,8 +28,6 @@ ski_location = SkiLocation.create({
 	name: 'Mountain of Awesomeness',
 	address: 'Your Mom',
 	url: 'www.awesome.com',
-	longitude: '123',
-	latitude: '321',
 	category: 'mountain'
 	})
 
