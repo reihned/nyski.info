@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.delete_all
-Trip.delete_all
-Ski_location.delete_all
+# User.delete_all
+# Trip.delete_all
+# SkiLocation.delete_all
 
 
 
@@ -24,12 +24,10 @@ funny = User.create({
 	admin: false
 	})
 
-ski_location = Ski_location.create({
+ski_location = SkiLocation.create({
 	name: 'Mountain of Awesomeness',
 	address: 'Your Mom',
 	url: 'www.awesome.com',
-	longitude: '123',
-	latitude: '321',
 	category: 'mountain'
 	})
 
@@ -42,3 +40,20 @@ trip = Trip.create({
 	description: 'Totally awesome!',
 	ski_location_id: ski_location.id
 	})
+
+locations = SkiLocation.create([
+		{
+			name: 			'Shawnee Mountain Ski Area',
+			address: 		'401 Hollow Rd East Stroudsburg, PA 18301',
+			url: 				'http://www.shawneemt.com/index.html',
+			category: 	'mountain'
+		},
+		{
+			name: 			'Eagle Rock Resort',
+			address: 		'1 Country Club Drive 18202',
+			url: 				'http://www.eaglerockresort.com/leisure-activities/ski/',
+			category: 	'mountain',
+		}
+	])
+
+#

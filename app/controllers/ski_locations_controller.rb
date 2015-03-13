@@ -3,19 +3,19 @@ class SkiLocationsController < ApplicationController
   before_action :set_ski_location, only: [:edit, :update, :destroy]
 
 	def index
-		@ski_locations = Ski_location.all
+		@ski_locations = SkiLocation.all
 	end
 
 	def new
-		@ski_location = Ski_location.new
+		@ski_location = SkiLocation.new
 	end
 
 	def create
-    @ski_location = Ski_location.new(ski_location_params)
+    @ski_location = SkiLocation.new(ski_location_params)
 
     respond_to do |format|
       if @ski_location.save
-        format.html { redirect_to ski_locations_path, notice: 'Ski_location was successfully created.' }
+        format.html { redirect_to ski_locations_path, notice: 'SkiLocation was successfully created.' }
         format.json { render :show, status: :created, location: @ski_locations }
       else
         format.html { render :new }
@@ -48,9 +48,9 @@ class SkiLocationsController < ApplicationController
   end
 
   private
-  
+
   def set_ski_location
-  	@ski_location = Ski_location.find(params[:id])
+  	@ski_location = SkiLocation.find(params[:id])
   end
 
   def ski_location_params

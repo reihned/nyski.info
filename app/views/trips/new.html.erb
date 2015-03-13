@@ -7,11 +7,11 @@
  <div class="field">
    <%= f.label :description %><br>
    <%= f.text_field :description %>
- </div>  
+ </div>
  <div class="field">
    <%= f.label :ski_location_id %><br>
    <%= f.select :ski_location_id,
-   Ski_location.all.collect { |r| [r.name, r.id]} %>
+   SkiLocation.all.collect { |r| [r.name, r.id]} %>
  </div>
  <div class="field">
    <%= f.label :start_date %><br>
@@ -25,4 +25,3 @@
    <%= f.submit "create" %>
  </div>
 <% end %>
-
