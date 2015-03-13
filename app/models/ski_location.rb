@@ -1,4 +1,4 @@
-class Ski_location < ActiveRecord::Base
+class SkiLocation < ActiveRecord::Base
   acts_as_mappable :default_units => :miles,
                    :default_formula => :sphere,
                    :distance_field_name => :distance,
