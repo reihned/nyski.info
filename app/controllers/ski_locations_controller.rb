@@ -29,8 +29,8 @@ class SkiLocationsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @ski_location.update(user_params)
-        format.html { redirect_to @ski_location, notice: 'Ski location was successfully updated.' }
+      if @ski_location.update(ski_location_params)
+        format.html { redirect_to ski_locations_path, notice: 'Ski location was successfully updated.' }
         format.json { render :show, status: :ok, location: @ski_location }
       else
         format.html { render :edit }
