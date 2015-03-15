@@ -38,10 +38,10 @@ trip = Trip.create({
 	creator_id: admin.id,
 	name: 'Fantastic Trip',
 	description: 'Totally awesome!',
-	ski_location_id: location.id
+	ski_location_id: ski_location.id
 	})
 
-location = SkiLocation.create(
+shawnee = SkiLocation.create(
 		{
 			name: 			'Shawnee Mountain Ski Area',
 			address: 		'401 Hollow Rd East Stroudsburg, PA 18301',
