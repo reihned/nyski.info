@@ -16,7 +16,6 @@ $(function(){
 			method: 'GET',
 			dataType: 'json',
 			success: function(data){
-				debugger;
 				findDirections(origin, data);
 			}
 		})
