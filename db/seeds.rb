@@ -35,25 +35,25 @@ trip = Trip.create({
 	start_date: '2/2/1985',
 	end_date: '2/4/1985',
 	status: 0,
-	user_id: admin.id,
+	creator_id: admin.id,
 	name: 'Fantastic Trip',
 	description: 'Totally awesome!',
-	ski_location_id: ski_location.id
+	ski_location_id: location.id
 	})
 
-locations = SkiLocation.create([
+location = SkiLocation.create(
 		{
 			name: 			'Shawnee Mountain Ski Area',
 			address: 		'401 Hollow Rd East Stroudsburg, PA 18301',
 			url: 				'http://www.shawneemt.com/index.html',
 			category: 	'mountain'
-		},
-		{
+		})
+
+eaglerock = SkiLocation.create({
 			name: 			'Eagle Rock Resort',
 			address: 		'1 Country Club Drive 18202',
 			url: 				'http://www.eaglerockresort.com/leisure-activities/ski/',
 			category: 	'mountain',
-		}
-	])
+		})
 
 #
