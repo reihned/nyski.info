@@ -16,6 +16,7 @@ $(function(){
 			method: 'GET',
 			dataType: 'json',
 			success: function(data){
+				debugger;
 				findDirections(origin, data);
 			}
 		})
@@ -26,7 +27,7 @@ $(function(){
 
 function findDirections(origin, destination){
 	var baseURL = "https://maps.googleapis.com/maps/api/directions/json?origin=";
-var ApiKey = "&key=AIzaSyAcPX5bMzvKRs1_Fpc9157GfAaou3Oey_4";
+	var ApiKey = "&key=AIzaSyAcPX5bMzvKRs1_Fpc9157GfAaou3Oey_4";
 
 //ApiKey is a placeholder for now
 
