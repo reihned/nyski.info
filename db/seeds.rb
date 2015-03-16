@@ -30,12 +30,12 @@ locations = SkiLocation.create([
 		category: 	'mountain'
 	},{
 		name: 			'Eagle Rock Resort',
-		address: 		'1 Country Club Drive 18202',
+		address: 		'1 Country Club Drive, Hazle Township, PA 18202',
 		url: 				'http://www.eaglerockresort.com/leisure-activities/ski/',
 		category: 	'mountain'
 	},{
 		name: 			'Mountain of Awesomeness',
-		address: 		'10 E 21st st',
+		address: 		'10 E 21st st new york, ny',
 		url: 				'www.awesome.com',
 		category: 	'mountain'
 	},{
