@@ -57,7 +57,7 @@ $(function(){
 		$.ajax({
 			url: '/trips/' + destination,
 			method: 'GET',
-			dataType: 'jsonp',
+			dataType: 'json',
 			success: function(data){
 				findDirections(origin, data);
 			}
@@ -75,10 +75,9 @@ function findDirections(origin, destination){
 
 	$.ajax({
 		url: baseURL + origin + "&destination=" + destination + "&key=" + ApiKey,
-		dataType: 'jsonp',
+		dataType: 'json',
 		success:function(data){
 			console.log(data);
-
 		}
 	})
 
