@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   resources :ski_locations
 
-  resources :search, only:[:post,:show]
-
   # get '/login' => 'users#new'
   post '/login' => :login, controller: :users
   delete '/login' => :logout, controller: :users
