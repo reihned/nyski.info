@@ -1,3 +1,9 @@
+<h1>Name: <%= @trip.name %></h1>
+<p>You're going to: <%= @trip.ski_location.name %></p>
+<p>About this trip: <%= @trip.description %></p>
+<p>Departure date: <%= @trip.start_date %></p>
+<p>Returning at: <%= @trip.end_date %></p>
+<p>Made by: <%= @trip.halibut %></p>
 <%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
   <%= label_tag("Starting location:") %>
   <%= text_field_tag("origin") %>

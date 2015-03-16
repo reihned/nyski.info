@@ -11,12 +11,14 @@ Trip.delete_all
 SkiLocation.delete_all
 
 admin = User.create({
+	name: 'jane doe',
 	email: 'admin@nyski.club',
 	password: 'trippingdonkeys',
 	admin: true
 	})
 
 funny = User.create({
+	name: 'john doe',
 	email: 'jon@cray.edu',
 	password: 'what',
 	admin: false
@@ -39,10 +41,10 @@ locations = SkiLocation.create([
 		url: 				'www.awesome.com',
 		category: 	'mountain'
 	},{
-		name: "Aspen",
-		address: "199 Prospecter Rd Aspen, CO, 81611",
-		url: "http://www.aspensnowmass.com",
-		category: "resort"
+		name: 			"Aspen",
+		address: 		"199 Prospecter Rd Aspen, CO, 81611",
+		url: 				"http://www.aspensnowmass.com",
+		category: 	"resort"
 		}
 ])
 
