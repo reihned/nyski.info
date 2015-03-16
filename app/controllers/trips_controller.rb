@@ -24,7 +24,7 @@ class TripsController < ApplicationController
 
 	def create
 		@trip = Trip.new(trip_params)
-		@user = session[:user_id]
+		@user = current_user
 		respond_to do |format|
 			if @trip.update(creator_id: @user) && @trip.update(status: 'pending')
         format.html { redirect_to @trip, notice: 'Trip done been made.' }

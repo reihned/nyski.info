@@ -11,12 +11,14 @@ Trip.delete_all
 SkiLocation.delete_all
 
 admin = User.create({
+	name: 'jane doe',
 	email: 'admin@nyski.club',
 	password: 'trippingdonkeys',
 	admin: true
 	})
 
 funny = User.create({
+	name: 'john doe',
 	email: 'jon@cray.edu',
 	password: 'what',
 	admin: false
