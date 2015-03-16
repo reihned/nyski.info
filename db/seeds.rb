@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.delete_all
-# Trip.delete_all
-# SkiLocation.delete_all
+User.delete_all
+Trip.delete_all
+SkiLocation.delete_all
 
 admin = User.create({
 	email: 'admin@nyski.club',
@@ -38,7 +38,12 @@ locations = SkiLocation.create([
 		address: 		'10 E 21st st',
 		url: 				'www.awesome.com',
 		category: 	'mountain'
-	}
+	},{
+		name: "Aspen",
+		address: "199 Prospecter Rd Aspen, CO, 81611",
+		url: "http://www.aspensnowmass.com",
+		category: "resort"
+		}
 ])
 
 trips = Trip.create([

@@ -1,8 +1,8 @@
-<%= form_tag("/trips", method: "get", id:"origin-form", :'data-id' => @trip.id) do %>
+<%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
   <%= label_tag("Starting location:") %>
   <%= text_field_tag("origin") %>
   <%= submit_tag("Search") %>
  <% end %>
 
-<div id="map"></div>
+<div id="map-canvas" style="width: auto; height: 400px"></div>
 <p id="error"></p>
