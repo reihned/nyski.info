@@ -23,7 +23,11 @@ class SearchController < ApplicationController
 
   def show
     @trip = Trip.new({ski_location_id: params[:id]})
-    render 'trips/new'
+    if current_user
+      render 'trips/new'
+    else
+      redirect_to new_user_path
+    end
   end
 
 end
