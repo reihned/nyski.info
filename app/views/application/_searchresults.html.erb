@@ -2,10 +2,21 @@
   <div class="ski location" id="skiLocation<%= skiLocation.id %>">
     <h3><%= skiLocation.name %></h3>
     <p>
-      <strong>Address: </strong><span class="address"><%= skiLocation.address %></span>
+      <strong>Address: </strong>
+      <span class="address">
+        <%= skiLocation.address %>
+      </span>
     </p>
     <p>
-      <strong>Url: </strong><a class="url" href="<%= skiLocation.url %>"><%= skiLocation.url || skiLocation.name %></a>
+      <strong>Url: </strong>
+      <a class="url" href="<%= skiLocation.url %>">
+        <%= skiLocation.url || skiLocation.name %>
+      </a>
+    </p>
+    <p>
+      <a href="/search/<%= skiLocation.id %>" class="button select">
+        Select this location
+      </a>
     </p>
   </div>
 <% end %>
