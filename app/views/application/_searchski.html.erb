@@ -8,10 +8,10 @@
   </p>
   <p>
     <%= label_tag(:range, "Range: ") %>
-    <%= range_field(:search, :range, value: 50, in: 50..500, step: 10) %>
+    <%= range_field(:search, :range, value: (@currentRange || 50), in: (@currentRange || 50)..500, step: 10) %>
     <!-- <%= number_field(:search, :range, value: 50, in: 50..500, step: 10) %> -->
     <!-- <input type="range" id="searchRange" name="searchRange" min="50" max="500"> -->
-    <output name="rangeOut" for="searchRange">50</output><label> miles</label>
+    <output name="rangeOut" for="searchRange"><%= (@currentRange || 50) %></output><label> miles</label>
   </p>
   <p>
     <%= submit_tag("Search") %>
