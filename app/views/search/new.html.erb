@@ -1,2 +1,4 @@
 <%= render 'application/searchski' %>
-<%= render 'application/searchresults' %>
+<% if @skiLocations %>
+  <%= render 'application/searchresults' %>
+<% end %>

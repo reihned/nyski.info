@@ -18,6 +18,15 @@ class Location < ActiveRecord::Base
                    :default_formula =>      :sphere,
                    :distance_field_name =>  :distance,
                    :lat_column_name =>      :latitude,
-                   :lng_column_name =>      :longitude,
-                   :auto_geocode =>          {:field=>:address}
+                   :lng_column_name =>      :longitude
+                  #  :auto_geocode =>          {:field=>:address}
+
+  after_initialize :geocode_address, :on => :new
+
+  private
+  def geocode_address
+    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    errors.add(:address, "Could not Geocode address") if !geo.success
+    self.latitude, self.longitude = geo.lat,geo.lng if geo.success
+  end
 end
