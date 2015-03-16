@@ -10,6 +10,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav>
+    <ul class="nav-navbar">
+      <li><a href="/trips">Explore Trips!</a></li>
+      <li><a href="/trips/new">Create Your Own Trip!</a></li>
+    </ul>
+  </nav>
 	<% if current_user %>
 		<%= current_user.email %>
 	<% end %>
