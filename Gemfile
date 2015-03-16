@@ -38,6 +38,9 @@ gem 'httparty'
 gem 'geokit', '~> 1.9.0'
 gem 'geokit-rails'
 
+# gem "activerecord-tableless"
+gem "activerecord-tableless", ">= 1.3.4",  git:'https://github.com/david135/activerecord-tableless.git'
+
 group :production do
   # Use Unicorn as the app server
   gem 'unicorn'
