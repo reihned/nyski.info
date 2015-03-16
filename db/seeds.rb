@@ -39,10 +39,10 @@ locations = SkiLocation.create([
 		url: 				'www.awesome.com',
 		category: 	'mountain'
 	},{
-		name: "Aspen",
-		address: "199 Prospecter Rd Aspen, CO, 81611",
-		url: "http://www.aspensnowmass.com",
-		category: "resort"
+		name: 			"Aspen",
+		address: 		"199 Prospecter Rd Aspen, CO, 81611",
+		url: 				"http://www.aspensnowmass.com",
+		category: 	"resort"
 		}
 ])
 
