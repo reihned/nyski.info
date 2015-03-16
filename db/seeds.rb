@@ -61,6 +61,3 @@ trips = Trip.create([
 		ski_location_id: locations[1].id
 	}
 ])
-
-
-#

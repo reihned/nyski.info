@@ -38,6 +38,9 @@ gem 'httparty'
 gem 'geokit', '~> 1.9.0'
 gem 'geokit-rails'
 
+# gem "activerecord-tableless"
+gem "activerecord-tableless", ">= 1.3.4",  git:'https://github.com/david135/activerecord-tableless.git'
+
 group :production do
   # Use Unicorn as the app server
   gem 'unicorn'
@@ -61,6 +64,10 @@ group :development, :test do
   # better errors
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # goes to pry if it has an error in development
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

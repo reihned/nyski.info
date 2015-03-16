@@ -1,0 +1,19 @@
+<%= form_tag("/search", method: "post", oninput: "rangeOut.value=search_range.value") do %>
+  <h3> Search for a Ski Location near you </h3>
+  <p>
+    <%= label_tag(:origin, "Address or Zip Code: ") %>
+  <p>
+  </p>
+    <%= text_area_tag(:origin) %>
+  </p>
+  <p>
+    <%= label_tag(:range, "Range: ") %>
+    <%= range_field(:search, :range, value: 50, in: 50..500, step: 10) %>
+    <!-- <%= number_field(:search, :range, value: 50, in: 50..500, step: 10) %> -->
+    <!-- <input type="range" id="searchRange" name="searchRange" min="50" max="500"> -->
+    <output name="rangeOut" for="searchRange">50</output><label> miles</label>
+  </p>
+  <p>
+    <%= submit_tag("Search") %>
+  </p>
+<% end %>
