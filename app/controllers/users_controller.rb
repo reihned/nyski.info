@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   @user = User.find_by_email(params[:email])
    if @user && @user.authenticate(params[:password])
      session[:user_id] = @user.id
-     redirect_to user_path(@user)
+      if session[:search_id]
+        redirect_to "/search/#{session[:search_id]}"
+      else
+        redirect_to user_path(@user)
+      end
    else
      render :new, notice: 'Invalid Login'
    end
@@ -24,6 +28,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     if current_user
+      # Pry.start(binding)
+      
+
       @user = current_user
     else
       redirect_to new_user_path
@@ -32,6 +39,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    # binding.pry
     if current_user
       redirect_to user_path(current_user)
     end
