@@ -25,7 +25,9 @@ class SearchController < ApplicationController
     @trip = Trip.new({ski_location_id: params[:id]})
     if current_user
       render 'trips/new'
+      session[:search_id] = nil
     else
+      session[:search_id] = params[:id]
       redirect_to new_user_path
     end
   end
