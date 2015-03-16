@@ -25,7 +25,6 @@ function calculateRoute(from, to) {
 	  {
 	    if (status == google.maps.DirectionsStatus.OK)
 	    {
-	    	debugger;
 	      new google.maps.DirectionsRenderer({
 	        map: mapObject,
 	        directions: response
@@ -45,43 +44,3 @@ $(function(){
 	  calculateRoute(origin, destination);
 	});
 })
-// google.maps.event.addDomListener(window, 'load', calculateRoute);
-
-// $(function(){
-// 	console.log('loaded')
-
-
-// 	$('#origin-form').on('submit', function(e){
-		
-// 		e.preventDefault();
-
-// 		var origin = $('#origin').val();
-// 		var destination = $(this).attr('data-id');
-	
-// 		$.ajax({
-// 			url: '/trips/' + destination,
-// 			method: 'GET',
-// 			dataType: 'json',
-// 			success: function(data){
-// 				findDirections(origin, data);
-// 			}
-// 		})
-// 	})
-// })
-
-
-
-// function findDirections(origin, destination){
-// 	var baseURL = "https://maps.googleapis.com/maps/api/directions/json?origin=";
-// 	var ApiKey = "&key=AIzaSyAcPX5bMzvKRs1_Fpc9157GfAaou3Oey_4";
-
-// //ApiKey is a placeholder for now
-
-// 	$.ajax({
-// 		url: baseURL + origin + "&destination=" + destination + "&key=" + ApiKey,
-// 		dataType: 'json',
-// 		success:function(data){
-// 			console.log(data);
-// 		}
-// 	})
-// }
