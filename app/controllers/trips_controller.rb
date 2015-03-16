@@ -25,15 +25,19 @@ class TripsController < ApplicationController
 	def create
 		@trip = Trip.new(trip_params)
 		@user = current_user
-		respond_to do |format|
-			if @trip.update(creator_id: @user.id) && @trip.update(status: 'pending')
-        format.html { redirect_to @trip, notice: 'Trip done been made.' }
-        format.json { render :show, status: :ok, location: @trip }
-      else
-        format.html { render :edit }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
-    end
+			if current_user 
+				respond_to do |format|
+					if @trip.update(creator_id: @user.id) && @trip.update(status: 'pending')
+   					format.html { redirect_to @trip, notice: 'Trip done been made.' }
+        		format.json { render :show, status: :ok, location: @trip }
+      		else
+        		format.html { render :edit }
+        		format.json { render json: @trip.errors, status: :unprocessable_entity }
+      		end
+   			end
+    	else
+     		redirect_to new_user_path
+     	end
 	end
 
 	def update

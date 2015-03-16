@@ -13,6 +13,15 @@
   <header>
     <%= image_tag "nyski_logo.png" %>
   </header>
+  <nav>
+    <ul class="nav-navbar">
+      <li><a href="/trips">Explore Trips!</a></li>
+      <li><a href="/trips/new">Create Your Own Trip!</a></li>
+    </ul>
+  </nav>
+
+
+
 	<% if current_user %>
 		<%= current_user.email %>
 	<% end %>

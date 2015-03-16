@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'welcome#index' # 'users#new'
-  resources :users
+  resources :users, only: [:new, :create, :show, :delete, :edit]
   resources :trips
 
   resources :ski_locations
