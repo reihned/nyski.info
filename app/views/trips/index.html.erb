@@ -7,6 +7,7 @@
 		<p><%= trip.start_date %></p>
 		<p><%= trip.end_date %></p>
 		<p><%= trip.ski_location.name %></p>
-		<p><%= link_to 'Show', trip_path(trip) %></p>
+		<p><%= link_to 'Show', trip_path(trip) %></p>		
+		<%= button_to "JOIN this AWESOME TRIP!", trips_path, :method => "get" %>
 	<% end %>
 <% end %>
