@@ -1,4 +1,5 @@
-<h1>Name: <%= @trip.name %></h1>
+<h1>Trip Name: <%= @trip.name %></h1>
+<%= button_to "JOIN this AWESOME TRIP!", trips_path, :method => "get" %>
 <p>You're going to: <%= @trip.ski_location.name %></p>
 <p>About this trip: <%= @trip.description %></p>
 <p>Departure date: <%= @trip.start_date %></p>
