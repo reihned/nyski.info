@@ -6,31 +6,27 @@ class UsersController < ApplicationController
 
   def login
   @user = User.find_by_email(params[:email])
-   if @user && @user.authenticate(params[:password])
-     session[:user_id] = @user.id
-      if session[:search_id]
-        redirect_to "/search/#{session[:search_id]}"
-      else
-        redirect_to user_path(@user)
-      end
-   else
-     render :new, notice: 'Invalid Login'
-   end
- end
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+       if session[:search_id]
+         redirect_to "/search/#{session[:search_id]}"
+       else
+         redirect_to user_path(@user)
+       end
+    else
+      render :new, notice: 'Invalid Login'
+    end
+  end
 
- def logout
-   reset_session
-   redirect_to new_user_path, notice: 'You have been logged out'
- end
-
+  def logout
+    reset_session
+    redirect_to new_user_path, notice: 'You have been logged out'
+  end
 
   # GET /users/1
   # GET /users/1.json
   def show
     if current_user
-      # Pry.start(binding)
-      
-
       @user = current_user
     else
       redirect_to new_user_path
@@ -39,7 +35,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    # binding.pry
     if current_user
       redirect_to user_path(current_user)
     end
@@ -58,8 +53,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
