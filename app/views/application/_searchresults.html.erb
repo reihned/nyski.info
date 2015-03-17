@@ -1,3 +1,6 @@
+<% if !@trips %>
+  <h2>Your Search Netted 0 Results...</h2>
+<% end %>
 <% @skiLocations.each do |skiLocation| %>
   <div class="ski location" id="skiLocation<%= skiLocation.id %>">
     <h3><%= skiLocation.name %></h3>
