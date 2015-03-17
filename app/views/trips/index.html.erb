@@ -8,6 +8,8 @@
 		<p><%= trip.end_date %></p>
 		<p><%= trip.ski_location.name %></p>
 		<p><%= link_to 'Show', trip_path(trip) %></p>		
-		<%= button_to "JOIN this AWESOME TRIP!", trips_path, :method => "get" %>
+		<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => trip.id) do %>
+			<%= submit_tag "JOIN this AWESOME TRIP!" %>
+		<% end %>
 	<% end %>
 <% end %>
