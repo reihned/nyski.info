@@ -17,6 +17,8 @@
     <ul class="nav-navbar">
       <% if !current_user %>
         <li><a href="users/new">Login</a></li>
+      <% else %>
+        <%= link_to "Your Profile", user_path(current_user.id) %>
       <% end %>
       <li><a href="/">Find a Trip Near You!</a></li>
       <li><a href="/trips">Explore Trips!</a></li>

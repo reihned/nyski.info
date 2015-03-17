@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def logout
     reset_session
-    #redirect_to new_user_path, notice: 'You have been logged out'
+    redirect_to new_user_path, notice: 'You have been logged out'
   end
 
   # GET /users/1
