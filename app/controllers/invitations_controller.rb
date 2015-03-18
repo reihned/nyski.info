@@ -9,10 +9,11 @@ class InvitationsController < ApplicationController
 	end
 	
 	def create
-		@invitation = Invatition.new(invitation_params)
+		invitation = Invitation.new(invitation_params)
+		Pry.start(binding)
 		@user = current_user
 		respond_to do |format|
-			if @invitation.update({
+			if invitation.update({
 				email: @user.email, 
 				rsvp: true, 
 				user_id: @user.id
@@ -24,16 +25,21 @@ class InvitationsController < ApplicationController
 				format.json do
 					render :json => { 
 					invitation: {
-							errors: @invitation.errors.full_messages
+							errors: invitation.errors.full_messages
 						} 
 					}
 				end
 			end
 		end
-
 	end
 
 	def destroy
+	end
+
+	private
+
+	def invitation_params
+		params.require(:invitation).permit(:user_id, :trip_id, :rsvp, :email, :start_location)
 	end
 
 end

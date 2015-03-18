@@ -8,9 +8,22 @@
 		<p><%= trip.end_date %></p>
 		<p><%= trip.ski_location.name %></p>
 		<p><%= link_to 'Show', trip_path(trip) %></p>		
-		<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => trip.id) do %>
+
+		<% if @invitation.user_id == current_user.id %>
+		<%= form_tag("/invitations", id:"create-invitation", :method => "POST") do %>
+		<input name="invitation[trip_id]" type="hidden" value="<%=trip.id%>"/>
+		<input name="invitation[user_id]" type="hidden" value="<%=current_user.id%>"/>
+		<input name="invitation[email]" type="hidden" value="<%=current_user.email%>"/>
+		<input name="invitation[rsvp]" type="hidden" value="<%=true%>"/>
+		<input name="invitation[start_location]" type="hidden" value=""/>
 			<%= submit_tag "JOIN this AWESOME TRIP!" %>
+			<% end %>
+			<% else %>
+			<%= form_tag("/invitations", :method => "DESTROY") do %>
+			<input name="invitation[rsvp]" type="hidden" value="<%=false%>" />
+
+			<%= submit_tag "unjoin this awesome trip" %>
 		<% end %>
 	<% end %>
 <% end %>
-
+<% end %>
