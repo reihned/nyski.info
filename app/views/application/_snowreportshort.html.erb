@@ -1,1 +1,33 @@
-<!-- expecting snowReport JSON -->
+<!-- expecting snowReport hash from JSON -->
+<div class="snowReport" id="<%= snowReport["id"] %>">
+  <h2>Snow Report for <%= snowReport["resortName"] %></h2>
+  <section class="weather">
+    <h3>Weather<h3>
+    <article class="today">
+      <h4>Today</h4>
+      <p class="temperature low">
+        Low: <%= snowReport["weatherToday_Temperature_Low"]%> &deg;F
+      </p>
+      <p class="temperature high">
+        Hi: <%= snowReport["weatherToday_Temperature_High"]%> &deg;F
+      </p>
+    </article>
+  </section>
+  <section class="trailStatus">
+    <h3>Trail Status<h3>
+    <article class="trails">
+      <p>
+        Trails: <%= snowReport["openDownHillTrails"] %>/<%= snowReport["maxOpenDownHillTrails"] %>
+      </p>
+    </article>
+    <article class="lifts">
+      <p>
+        Lifts: <%= snowReport["openDownHillLifts"] %>/<%= snowReport["maxOpenDownHillLifts"] %>
+      </p>
+    </article>
+    </article>
+  </section>
+  <section class="accreditation">
+    <!-- template to attribute the source api here -->
+  </section>
+</div>
