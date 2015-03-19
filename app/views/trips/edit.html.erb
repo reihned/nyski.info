@@ -1,0 +1,8 @@
+<h3>Edit trip</h3>
+<%= form_for(@trip) do |form| %>
+   <h4>Host: <%= @trip.halibut %></h4>
+   <%= render form %>
+   <div class="actions">
+     <%= form.submit "update" %>
+   </div>
+<% end %>
