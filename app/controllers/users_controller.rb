@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
        if session[:search_id]
-         redirect_to "/search/#{session[:search_id]}"
+         redirect_to new_trip_path
        else
          redirect_to user_path(@user)
        end

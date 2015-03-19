@@ -19,6 +19,7 @@ class TripsController < ApplicationController
 		if !current_user
 			redirect_to new_user_path
 		else
+			@ski_location_id = session[:search_id] || SkiLocation.first.id
 			@trip = Trip.new
 		end
 	end
