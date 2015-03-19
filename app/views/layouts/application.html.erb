@@ -16,13 +16,13 @@
   <nav>
     <ul class="nav-navbar">
       <% if !current_user %>
-        <li><a href="users/new">Login</a></li>
+        <li><%= link_to "Login", new_user_path %></li>
       <% else %>
-      <li><%= link_to "Your Profile", user_path(current_user.id) %></li>
+        <li><%= link_to "Your Profile", user_path(current_user.id) %></li>
       <% end %>
       <li><a href="/">Find a Mountain Near You!</a></li>
-      <li><a href="/trips">Explore Trips!</a></li>
-      <li><a href="/trips/new">Create Your Own Trip!</a></li>
+      <li><%= link_to "Explore Trips!", trips_path %></li>
+      <li><%= link_to "Create Your Own Trip!", new_trip_path %></li>
     </ul>
   </nav>
 

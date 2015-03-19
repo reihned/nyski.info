@@ -1,7 +1,11 @@
 <h1>Trip Name: <%= @trip.name %></h1>
-	<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => @trip.id) do %>
-		<%= submit_tag "JOIN this AWESOME TRIP!" %>
-	<% end %>
+<% if current_user.id == @trip.creator_id %>
+	<%= link_to "edit trip", edit_trip_path(@trip) %>
+	<%= link_to "remove trip", @trip, method: :delete %>            
+<% end %>
+<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => @trip.id) do %>
+	<%= submit_tag "JOIN this AWESOME TRIP!" %>
+<% end %>
 <p>You're going to: <%= @trip.ski_location.name %></p>
 <p>About this trip: <%= @trip.description %></p>
 <p>Departure date: <%= @trip.start_date %></p>

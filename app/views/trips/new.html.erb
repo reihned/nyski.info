@@ -1,28 +1,9 @@
-<h1>Create a trip for your dummy friends</h1>
-<%= form_for(@trip) do |f| %>
- <div class="field">
-   <%= f.label :name %><br>
-   <%= f.text_field :name %>
- </div>
- <div class="field">
-   <%= f.label :description %><br>
-   <%= f.text_field :description %>
- </div>
- <div class="field">
-   <%= f.label :ski_location_id %><br>
-   <%= f.select :ski_location_id,
-   SkiLocation.all.collect { |r| [r.name, r.id]},
-   :selected => @trip.ski_location_id || SkiLocation.all.first.id %>
- </div>
- <div class="field">
-   <%= f.label :start_date %><br>
-   <%= f.date_field :start_date %>
- </div>
- <div class="field">
-   <%= f.label :end_date %><br>
-   <%= f.date_field :end_date %>
- </div>
- <div class="actions">
-   <%= f.submit "create" %>
- </div>
+<h3>Create a trippy trip for your fraynds</h3>
+<%= form_for(@trip) do |form| %>
+   <%= render form %>
+  <div class="actions">
+    <%= form.submit "Create" %>
+  </div>
 <% end %>
+
+<%= button_to 'Cancel', user_path(current_user.id), method: :get %>
