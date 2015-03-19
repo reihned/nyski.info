@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:index]
 
-  resources :invitations, only: [:new, :create, :delete]
+  resources :invitations, only: [:new, :create, :show, :delete, :edit]
 
   get "*path", to: redirect('/')
 end
