@@ -27,25 +27,47 @@ funny = User.create({
 locations = SkiLocation.create([
 	{
 		name: 			'Shawnee Mountain Ski Area',
-		address: 		'401 Hollow Rd East Stroudsburg, PA 18301',
-		url: 				'http://www.shawneemt.com/index.html',
-		category: 	'mountain'
+		address: 		'401 Hollow Rd East Stroudsburg, PA, 18301',
+		url: 				'http://www.shawneemt.com/',
+		category: 	'mountain',
+		report_id: 	717008
 	},{
 		name: 			'Eagle Rock Resort',
 		address: 		'1 Country Club Drive, Hazle Township, PA 18202',
 		url: 				'http://www.eaglerockresort.com/leisure-activities/ski/',
-		category: 	'mountain'
+		category: 	'resort',
+		report_id: 	412004
 	},{
-		name: 			'Mountain of Awesomeness',
-		address: 		'10 E 21st st new york, ny',
-		url: 				'www.awesome.com',
-		category: 	'mountain'
+		name: 			"Windham Mountain Resort",
+		address: 		"14 Clarence D Lane Road,	Windham, NY, 12496",
+		url: 				"http://www.windhammountain.com/",
+		category: 	"resort",
+		report_id:	518009
 	},{
-		name: 			"Aspen",
-		address: 		"199 Prospecter Rd Aspen, CO, 81611",
-		url: 				"http://www.aspensnowmass.com",
-		category: 	"resort"
-		}
+		name: 			"Okemo Mountain Resort",
+		address: 		"77 Okemo Ridge Road, Ludlow, VT, 05149",
+		url: 				"http://www.okemo.com/",
+		category: 	"resort",
+		report_id:	802013
+	},{
+		name: 			"Hunter Mountain",
+		address: 		"64 Klein Avenue, Hunter, NY, 12442",
+		url: 				"http://www.huntermtn.com/",
+		category: 	"mountain",
+		report_id:	518006
+	},{
+		name: 			"Mohawk Mountain Ski Area",
+		address: 		"46 Great Hollow Road, West Cornwall, CT, 06796",
+		url: 				"http://www.mohawkmtn.com",
+		category: 	"mountain",
+		report_id:	203001
+	},{
+		name: 			"Killington Mountain Resort",
+		address: 		"4763 Killington Road, Killington, VT, 05751",
+		url: 				"http://www.killington.com/",
+		category: 	"resort",
+		report_id:	802007
+	}
 ])
 
 trips = Trip.create([

@@ -21,7 +21,7 @@ module SnowReportApi
 
       response = self.class.get("/conditions.php?",options)
 
-      return response["items"].first
+      return response["items"].first || "error"
     end # location report
 
     #temperature should be in fahrenheit
