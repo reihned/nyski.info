@@ -4,9 +4,14 @@ class SnowReport < ActiveRecord::Base
 
   #instanced model
   has_no_table
-  column :report_id,  :integer
+  column :report_id,    :integer
+  # column :resort_name,  :varchar
 
-  attr_accessor :weather, :snow, :trails, :lifts
+  attr_accessor :resort_name,
+                :weather,
+                :snow,
+                :trails,
+                :lifts
 
   # base uri for httparty
   base_uri 'http://feeds.snocountry.net'
@@ -17,10 +22,14 @@ class SnowReport < ActiveRecord::Base
     reportFull = self.fullReport
     # puts reportFull
 
+    # set resort name
+    self.attributes.resort_name = fullReport["resortName"]
+
     # set weather
     weather = [ "Today", "Tomorrow", "DayAfterTomorrow", "Day4", "Day5"]
     self.weather = weather.map do |day|
       day = {
+        day:        day.gsub(/(?<x>([A-Z]|\d))/, ' \k<x>').lstrip, 
         low:        reportFull["weather#{day}_Temperature_Low"],
         high:       reportFull["weather#{day}_Temperature_High"],
         condition:  reportFull["weather#{day}_Condition"]

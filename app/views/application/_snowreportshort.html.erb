@@ -1,30 +1,33 @@
-<!-- expecting snowReport hash from JSON -->
-<div class="snowReport" id="<%= snowReport["id"] %>">
-  <h2>Snow Report for <%= snowReport["resortName"] %></h2>
+<!-- expecting snowReport model -->
+<div class="snowReport">
+  <h2>Snow Report for <%= snowReport.resort_name %></h2>
   <section class="weather">
     <h3>Weather<h3>
-    <article class="today">
-      <h4>Today</h4>
-      <p class="temperature low">
-        Low: <%= snowReport["weatherToday_Temperature_Low"]%> &deg;F
-      </p>
-      <p class="temperature high">
-        Hi: <%= snowReport["weatherToday_Temperature_High"]%> &deg;F
-      </p>
-    </article>
+    <% snowReport.weather.each do |weatherDay| %>
+      <article class="day">
+        <h4><%= weatherDay[:name] %></h4>
+        <div class="temperature">
+          <h5>Temperature</h5>
+          <p>
+            High: <%= weatherDay[:high] %>
+          </p>
+          <p>
+            Low: <%= weatherDay[:low] %>
+          </p>
+        </div>
+      </article>
+    <% end %>
   </section>
   <section class="trailStatus">
     <h3>Trail Status<h3>
     <article class="trails">
       <p>
-        Trails open: <%= snowReport["openDownHillTrails"] %>/<%= snowReport["maxOpenDownHillTrails"] %>
-      </p>
+        Trails open: <%= snowReport.trails %>
     </article>
     <article class="lifts">
       <p>
-        Lifts open: <%= snowReport["openDownHillLifts"] %>/<%= snowReport["maxOpenDownHillLifts"] %>
+        Lifts open: <%= snowReport.lifts %>
       </p>
-    </article>
     </article>
   </section>
   <section class="accreditation">
