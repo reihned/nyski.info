@@ -27,7 +27,7 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       if @invitation.save
         format.html { redirect_to trips_path, notice: 'Trip done been made.' }
-        format.json { render json: @invitation, status: :ok }
+        format.json { render json: @invitation.trip, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }

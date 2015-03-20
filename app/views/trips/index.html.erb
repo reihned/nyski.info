@@ -1,29 +1,6 @@
 <h1>Show Available Trips</h1>
 
-<% @trips.each do |trip| %>
-	<% if trip.status == "pending" %>
-		<%= link_to trip do %>
-			<h2><%= trip.name %></h2>
-		<% end %>
-		<p><%= trip.description %></p>
-		<p><%= trip.start_date %></p>
-		<p><%= trip.end_date %></p>
-		<p><%= trip.ski_location.name %></p>
+<!-- renders data from invitations.js -->
 
-		<% if current_user && (current_user.id == trip.creator_id) %>
-			<%= link_to "edit trip", edit_trip_path(trip) %>
-			<%= link_to "delete trip", trip, method: :delete %>
-		<% end %>
-
-
-		<div id="joining">
-			<!-- 	<input class="joinButton" type="button" value="JOIN" id="<%= trip.id %>"></input> -->
-		</div>
-<!-- 			<% if Invitation.where(user_id: current_user.id, trip_id: trip.id)[0] %>
-				<input class="unJoinButton" type="button" value="UNJOIN"></input>
-				<%= link_to "Unjoin this AWEESOME TRIP", @invitation, method: :delete %>
-			<% else %>
-			<% end %>  -->
-	<% end %>
-<% end %>
-
+<ul id="trips-ul">
+</ul>
