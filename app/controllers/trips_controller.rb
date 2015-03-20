@@ -3,7 +3,11 @@ class TripsController < ApplicationController
 
 	def index
 		@trips = Trip.all
-		@invitation = Invitation.find_by_user_id(current_user.id)
+		
+		respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @trips }
+    end
 	end
 
 	def show

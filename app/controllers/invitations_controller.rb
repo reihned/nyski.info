@@ -9,16 +9,46 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def show
-    @invitation = Invitation.find(params[:id])
+  def new
+    if !current_user
+      redirect_to new_user_path
+    else
+      @invitation = Invitation.new
+    end
   end
 
-  def update
-    @invitation.update(invite_params)
-    redirect_to @invitation.event
+  def create
+    @invitation = Invitation.new({
+      trip_id: params[:invitation][:trip_id].to_i,
+      user_id: current_user.id,
+      email: current_user.email,
+      rsvp: true
+    })
+    respond_to do |format|
+      if @invitation.save
+        format.html { redirect_to trips_path, notice: 'Trip done been made.' }
+        format.json { render json: @invitation, status: :ok }
+      else
+        format.html { render :edit }
+        format.json { render json: @invitation.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
+  def show
+  end
+
+  # def update
+  #   @invitation.update(invite_params)
+  #   redirect_to @invitation.event
+  # end
 
   def destroy
+    @invitation.destroy
+    respond_to do |format|
+      format.html { redirect_to trips_url, notice: 'Welcome to the Trip.' }
+      format.json { head :no_content }
+    end
   end
 
   private

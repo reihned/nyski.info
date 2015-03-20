@@ -10,19 +10,20 @@
 		<p><%= trip.end_date %></p>
 		<p><%= trip.ski_location.name %></p>
 
-		<% if current_user.id == trip.creator_id %>
+		<% if current_user && (current_user.id == trip.creator_id) %>
 			<%= link_to "edit trip", edit_trip_path(trip) %>
 			<%= link_to "delete trip", trip, method: :delete %>
 		<% end %>
 
-		<%= form_tag("/invitations", id:"create-invitation", :method => "POST") do %>
-			<input name="invitation[trip_id]" type="hidden" value="<%=trip.id%>"/>
-			<input name="invitation[user_id]" type="hidden" value="<%=current_user.id%>"/>
-			<input name="invitation[email]" type="hidden" value="<%=current_user.email%>"/>
-			<input name="invitation[rsvp]" type="hidden" value="<%=true%>"/>
-			<input name="invitation[start_location]" type="hidden" value=""/>
-			<%= submit_tag "JOIN this AWESOME TRIP!" %>
-		<% end %>
+
+		<div id="joining">
+			<!-- 	<input class="joinButton" type="button" value="JOIN" id="<%= trip.id %>"></input> -->
+		</div>
+<!-- 			<% if Invitation.where(user_id: current_user.id, trip_id: trip.id)[0] %>
+				<input class="unJoinButton" type="button" value="UNJOIN"></input>
+				<%= link_to "Unjoin this AWEESOME TRIP", @invitation, method: :delete %>
+			<% else %>
+			<% end %>  -->
 	<% end %>
 <% end %>
 
