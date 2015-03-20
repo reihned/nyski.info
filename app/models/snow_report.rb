@@ -6,19 +6,19 @@ class SnowReport < ActiveRecord::Base
   has_no_table
   column :report_id,  :integer
 
-  attr_accessor :weather
+  attr_accessor :weather, :snow, :trails, :lifts
 
   # base uri for httparty
   base_uri 'http://feeds.snocountry.net'
 
   after_initialize do
-    puts "after initialize"
+    # puts "after initialize"
 
     reportFull = self.fullReport
     # puts reportFull
 
+    # set weather
     weather = [ "Today", "Tomorrow", "DayAfterTomorrow", "Day4", "Day5"]
-
     self.weather = weather.map do |day|
       day = {
         low:        reportFull["weather#{day}_Temperature_Low"],
@@ -26,6 +26,24 @@ class SnowReport < ActiveRecord::Base
         condition:  reportFull["weather#{day}_Condition"]
       } # day
     end
+
+    # set surface
+    surfaces = [ "primary", "secondary" ]
+    self.snow = surfaces.map do |surface|
+      surface = { surface => reportFull["#{surface}SurfaceCondition"] }
+    end
+
+    # set trails
+    self.trails = [
+      reportFull["openDownhillTrails"],
+      reportFull["maxDownhillTrails"]
+    ].join("/")
+
+    # set lifts
+    self.lifts = [
+      reportFull["openDownhillLifts"],
+      reportFull["maxDownhillLifts"]
+    ].join("/")
   end
 
   def fullReport()
