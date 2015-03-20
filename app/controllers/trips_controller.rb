@@ -3,7 +3,23 @@ class TripsController < ApplicationController
 
 	def index
 		@trips = Trip.all
-		@invitation = Invitation.find_by_user_id(current_user.id)
+		results = []
+		@trips.map do |trip|
+			result = {
+				id: trip.id,
+				name: trip.name,
+				description: trip.description,
+				ski_location_name: trip.ski_location.name,
+				start_date: trip.start_date,
+				end_date: trip.end_date,
+				invitations: trip.invitations.find_by_user_id(current_user.id)
+			}
+			results << result
+		end
+		respond_to do |format|
+      format.html { render :index }
+      format.json { render json: results }
+    end
 	end
 
 	def show
@@ -19,6 +35,7 @@ class TripsController < ApplicationController
 		if !current_user
 			redirect_to new_user_path
 		else
+			@ski_location_id = session[:search_id] || SkiLocation.first.id
 			@trip = Trip.new
 		end
 	end

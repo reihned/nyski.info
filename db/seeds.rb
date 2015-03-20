@@ -9,6 +9,7 @@
 User.delete_all
 Trip.delete_all
 SkiLocation.delete_all
+Invitation.delete_all
 
 admin = User.create({
 	name: 'jane doe',
@@ -88,5 +89,19 @@ trips = Trip.create([
 		name: 'Baller tripping',
 		description: "We're going on a sweet trip to hit every mountain in the world. but first and foremost ",
 		ski_location_id: locations[1].id
+	}
+])
+
+invitations = Invitation.create([
+	{
+		user_id: funny.id,
+		trip_id: trips[0].id,
+		rsvp: false,
+		email: funny.email
+	} , {
+		user_id: admin.id,
+		trip_id: trips[1].id,
+		rsvp: true,
+		email: admin.email
 	}
 ])

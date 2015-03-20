@@ -27,6 +27,7 @@ class SearchController < ApplicationController
       render 'trips/new'
       session[:search_id] = nil
     else
+      Pry.start(binding)
       session[:search_id] = params[:id]
       redirect_to new_user_path
     end

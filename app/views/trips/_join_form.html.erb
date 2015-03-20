@@ -1,0 +1,36 @@
+		<%= form_tag("/invitations", id:"create-invitation", :method => "POST") do %>
+			<input name="invitation[trip_id]" type="hidden" value="<%=trip.id%>"/>
+			<input name="invitation[user_id]" type="hidden" value="<%=current_user.id%>"/>
+			<input name="invitation[email]" type="hidden" value="<%=current_user.email%>"/>
+			<input name="invitation[rsvp]" type="hidden" value="<%=true%>"/>
+			<input name="invitation[start_location]" type="hidden" value=""/>
+			<%= submit_tag "JOIN this AWESOME TRIP!" %>
+		<% end %>
+
+<div class="actions">
+	<%= form.submit "JOIN this AWESOME TRIP!" %>
+</div>
+
+
+<% @trips.each do |trip| %>
+	<% if trip.status == "pending" %>
+		<%= link_to trip do %>
+			<h2><%= trip.name %></h2>
+		<% end %>
+		<p><%= trip.description %></p>
+		<p><%= trip.start_date %></p>
+		<p><%= trip.end_date %></p>
+		<p><%= trip.ski_location.name %></p>
+
+		<% if current_user && (current_user.id == trip.creator_id) %>
+			<%= link_to "edit trip", edit_trip_path(trip) %>
+			<%= link_to "delete trip", trip, method: :delete %>
+		<% end %>
+
+
+		<div class="joining">
+	
+		</div>
+
+	<% end %>
+<% end %>
