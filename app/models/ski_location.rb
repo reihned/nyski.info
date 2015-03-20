@@ -7,4 +7,18 @@ class SkiLocation < ActiveRecord::Base
                    :auto_geocode=>{:field=>:address}
 
   has_many :trips
+
+  attr_accessor :report
+
+  after_initialize do
+    self.report = self.generateReport
+    # puts self.report
+  end
+
+  # private
+  def generateReport(this=self)
+    report = SnowReport.new({report_id: this.attributes["report_id"]})
+    # puts this.attributes
+    return report
+  end
 end
