@@ -1,5 +1,4 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:show, :edit, :update, :destroy]
   
   def index
     @invitations = current_user.invitations
@@ -24,10 +23,20 @@ class InvitationsController < ApplicationController
       email: current_user.email,
       rsvp: true
     })
+    trip = @invitation.trip
+    result = {
+        id: trip.id,
+        name: trip.name,
+        description: trip.description,
+        ski_location_name: trip.ski_location.name,
+        start_date: trip.start_date,
+        end_date: trip.end_date,
+        invitation: @invitation
+      }
     respond_to do |format|
       if @invitation.save
         format.html { redirect_to trips_path, notice: 'Trip done been made.' }
-        format.json { render json: @invitation.trip, status: :ok }
+        format.json { render json: result, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }
@@ -44,10 +53,21 @@ class InvitationsController < ApplicationController
   # end
 
   def destroy
+    @invitation = Invitation.find(params[:id])
+    trip = @invitation.trip
+    result = {
+      id: trip.id,
+      name: trip.name,
+      description: trip.description,
+      ski_location_name: trip.ski_location.name,
+      start_date: trip.start_date,
+      end_date: trip.end_date,
+      invitation: nil
+    }
     @invitation.destroy
     respond_to do |format|
       format.html { redirect_to trips_url, notice: 'Welcome to the Trip.' }
-      format.json { head :no_content }
+      format.json { render json: result }
     end
   end
 

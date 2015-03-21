@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'welcome#index' # 'users#new'
   resources :users, only: [:new, :create, :show, :delete, :edit]
   resources :trips
+  resources :invitations
 
   resources :ski_locations
 
@@ -12,8 +13,6 @@ Rails.application.routes.draw do
   resources :search, only: [:new, :create, :show]
 
   resources :welcome, only: [:index]
-
-  resources :invitations, only: [:new, :create, :show, :delete, :edit]
 
   get "*path", to: redirect('/')
 end

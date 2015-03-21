@@ -38,7 +38,7 @@ $(function() {
   		type: 'delete',
   		dataType: 'json',
   		success: function(data) {
-  			
+  			renderTrip(data)
   		}
   	})
   })
@@ -72,7 +72,6 @@ var renderTrip = function(trip) {
 	var $newTripLi = $('<li id="' + trip.id + '"><h2>' + trip.name + '</h2></li>');
 	var $newTripP = $('<p>Description: ' + trip.description + '<br/> Mountain: ' + trip.ski_location_name + '<br/>Start Date: ' + trip.start_date + '<br/> End Date: ' + trip.end_date + '</p>');
 	$newTripLi.append($newTripP);
-	$newTripLi.data('invitation-id', trip.invitations.id)
 
   if ($oldTripLi.length) {
   	$oldTripLi.replaceWith($newTripLi);
@@ -80,9 +79,10 @@ var renderTrip = function(trip) {
 		$tripsUl.append($newTripLi);
 	}
 
-	if(trip.invitations == null) {
+	if(trip.invitation == null) {
 		renderJoinButton($newTripLi);
 	} else {
+		$newTripLi.data('invitation-id', trip.invitation.id)
 		renderUnjoinButton($newTripLi);
 	}
 
