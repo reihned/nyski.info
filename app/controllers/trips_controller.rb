@@ -12,7 +12,7 @@ class TripsController < ApplicationController
 				ski_location_name: trip.ski_location.name,
 				start_date: trip.start_date,
 				end_date: trip.end_date,
-				invitation: trip.invitations || trip.invitations.find_by_user_id(current_user.id)
+				invitation: trip.invitations.find_by_user_id(current_user.id)
 			}
 			results << result
 		end
