@@ -11,6 +11,7 @@ $(function() {
   		})
   	}
 	 });
+  
   $('#trips-ul').on('click', '.join', function(e) {
   	e.preventDefault();
   	trip_id = this.parentElement.id;
@@ -42,28 +43,8 @@ $(function() {
   		}
   	})
   })
-
   var addJoinTrip = function(){
-
   }
-	// $('#joining').on('click', '.joinButton', function(e) {
-	// 	e.preventDefault();
-	// 	console.log("look at me! im mr meseeks!")
-	// 	var trip_id = this.id;
-	// 	var values = {
-	// 		trip_id: trip_id,
-	// 	};
-
-	//   $.ajax({
-	//     url: '/invitations',
-	//     method: 'POST',
-	//     dataType: 'json',
-	//     data: { invitation: values },
-	//     success: function(data){
-	//     	console.log(data);
-	//     }
-	//   })
-	// })
 });
 
 var renderTrip = function(trip) {

@@ -1,7 +1,28 @@
 <h3>Create a trippy trip for your fraynds</h3>
 <%= form_for(@trip) do |form| %>
-  	<%= render form %>
-  <div class="actions">
+	<div class="field">
+		<%= form.label :name %><br>
+		<%= form.text_field :name %>
+	</div>
+	<div class="field">
+		<%= form.label :description %><br>
+		<%= form.text_field :description %>
+	</div>
+	<div class="field">
+		<%= form.label :ski_location_id %><br>
+		<%= form.select :ski_location_id,
+			SkiLocation.all.collect { |r| [r.name, r.id]},
+			:selected => @ski_location_id %>
+	</div>
+	<div class="field">
+		<%= form.label :start_date %><br>
+		<%= form.date_field :start_date %>
+	</div>
+	<div class="field">
+		<%= form.label :end_date %><br>
+		<%= form.date_field :end_date %>
+	</div>
+	  <div class="actions">
     <%= form.submit "Create" %>
   </div>
 <% end %>
