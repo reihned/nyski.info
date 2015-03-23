@@ -13,7 +13,8 @@ class SnowReport < ActiveRecord::Base
                 :weather,
                 :snow,
                 :trails,
-                :lifts
+                :lifts,
+                :source
 
   # base uri for httparty
   base_uri 'http://feeds.snocountry.net'
@@ -55,6 +56,9 @@ class SnowReport < ActiveRecord::Base
       reportFull["openDownHillLifts"],
       reportFull["maxOpenDownHillLifts"]
     ].join("/")
+
+    # set source link
+    self.source = reportFull["SnoCountryResortLink"]
   end
 
 # private
