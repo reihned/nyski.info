@@ -18,10 +18,8 @@
       </article>
     <% end %>
   </section>
-  <details class="trailStatus">
-    <summary>
-      <h3>Trail Status</h3>
-    </summary
+  <section class="trailStatus">
+    <h3>Trail Status</h3>
     <article class="trails">
       <p>
         Trails open: <%= snowReport.trails %>
@@ -31,12 +29,12 @@
         Lifts open: <%= snowReport.lifts %>
       </p>
     </article>
-  </details>
-  <details class="surfaceStatus">
+  </section>
+  <section class="surfaceStatus">
     <h3></h3>
     <p>
     </p>
-  </details>
+  </section>
   <section class="accreditation">
     <!-- gsub to fix depreciated link-->
     <a href="<%= snowReport.source.gsub("index.php","en") %>">
