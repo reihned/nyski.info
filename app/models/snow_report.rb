@@ -2,7 +2,9 @@ class SnowReport < ActiveRecord::Base
   include HTTParty
   base_uri 'http://feeds.snocountry.net'
 
-  #instanced model
+  # THIS CAN BE REFACTORED TO SAVE AND UPDATE DAILY INSTEAD OF INSTANCED
+
+  # instanced model
   has_no_table
   column :report_id,    :integer
   # column :resort_name,  :varchar
@@ -23,13 +25,13 @@ class SnowReport < ActiveRecord::Base
     # puts reportFull
 
     # set resort name
-    self.attributes.resort_name = fullReport["resortName"]
+    self.resort_name = fullReport["resortName"]
 
     # set weather
     weather = [ "Today", "Tomorrow", "DayAfterTomorrow", "Day4", "Day5"]
     self.weather = weather.map do |day|
       day = {
-        day:        day.gsub(/(?<x>([A-Z]|\d))/, ' \k<x>').lstrip, 
+        day:        day.gsub(/(?<x>([A-Z]|\d))/, ' \k<x>').lstrip,
         low:        reportFull["weather#{day}_Temperature_Low"],
         high:       reportFull["weather#{day}_Temperature_High"],
         condition:  reportFull["weather#{day}_Condition"]
@@ -44,16 +46,18 @@ class SnowReport < ActiveRecord::Base
 
     # set trails
     self.trails = [
-      reportFull["openDownhillTrails"],
-      reportFull["maxDownhillTrails"]
+      reportFull["openDownHillTrails"],
+      reportFull["maxOpenDownHillTrails"]
     ].join("/")
 
     # set lifts
     self.lifts = [
-      reportFull["openDownhillLifts"],
-      reportFull["maxDownhillLifts"]
+      reportFull["openDownHillLifts"],
+      reportFull["maxOpenDownHillLifts"]
     ].join("/")
   end
+
+# private
 
   def fullReport()
     options = {
