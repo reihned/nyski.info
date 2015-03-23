@@ -10861,6 +10861,112 @@ $(function(){
 	});
 })
 ;
+if(window.location.hostname == "nyski.info"){
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60947858-1', 'auto');
+  ga('send', 'pageview');
+}else if(window.location.hostname == "http://ancient-crag-6291.herokuapp.com/"){
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-60901253-1', 'auto');
+  ga('send', 'pageview');
+}else{
+  console.log("Google Analytics not loaded");
+}
+;
+$(function() {
+	console.log("dup");
+	var $joining = $('.joining');
+  $.ajax({
+  	url: '/trips',
+  	type: 'get',
+  	dataType: 'json',
+  	success: function(data) {
+  		data.forEach(function(trip){
+		  	renderTrip(trip);
+  		})
+  	}
+	 });
+  
+  $('#trips-ul').on('click', '.join', function(e) {
+  	e.preventDefault();
+  	trip_id = this.parentElement.id;
+  	values = {
+  		trip_id: trip_id
+  	};
+  	$.ajax({
+  		url: '/invitations',
+  		type: 'post',
+  		dataType: 'json',
+  		data: {
+  			invitation: values
+  		},
+  		success: function(data) {
+  			console.log(data);
+  			renderTrip(data);
+  		}
+  	})
+  })
+
+  $('#trips-ul').on('click', '.unjoin', function(e){
+  	e.preventDefault();
+  	$.ajax({
+  		url: '/invitations/'+$(this.parentElement).data('invitation-id'),
+  		type: 'delete',
+  		dataType: 'json',
+  		success: function(data) {
+  			renderTrip(data)
+  		}
+  	})
+  })
+  var addJoinTrip = function(){
+  }
+});
+
+var renderTrip = function(trip) {
+	var $oldTripLi = $('#'+trip.id);
+	var $tripsUl = $('#trips-ul');
+	var $newTripLi = $('<li id="' + trip.id + '"><h2>' + trip.name + '</h2></li>');
+	var $newTripP = $('<p>Description: ' + trip.description + '<br/> Mountain: ' + trip.ski_location_name + '<br/>Start Date: ' + trip.start_date + '<br/> End Date: ' + trip.end_date + '</p>');
+	$newTripLi.append($newTripP);
+
+  if ($oldTripLi.length) {
+  	$oldTripLi.replaceWith($newTripLi);
+  } else {
+		$tripsUl.append($newTripLi);
+	}
+
+	if(trip.invitation == null) {
+		renderJoinButton($newTripLi);
+	} else {
+		$newTripLi.data('invitation-id', trip.invitation.id)
+		renderUnjoinButton($newTripLi);
+	}
+
+	return $newTripLi
+}
+
+var renderJoinButton = function($ele){
+	var $tripsUl = $('#trips-ul');
+	var joinButton = $('<button class="join">');
+	joinButton.html("JOIN EL TRIP");
+	$ele.append(joinButton);
+}
+
+var renderUnjoinButton = function($ele) {
+	var $tripsUl = $('#trips-ul');
+	var unJoinButt = $('<button class="unjoin">');
+	unJoinButt.html("Miss out on el trip");
+	$ele.append(unJoinButt);
+}
+
+// have all trip info displayed on this index page with the appropriate buttons including delete and edit
+;
 var SkiLocation = function(args) {
 	args = args || {}
 	this.id = args.id;
