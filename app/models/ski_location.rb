@@ -8,7 +8,15 @@ class SkiLocation < ActiveRecord::Base
 
   has_many :trips
 
-  attr_accessor :report
+  # remove this if snow report is refactored
+  # this would be replaced with a has one
+  def snow_report
+    this = self
+    # refactor this later after snow report is saved daily
+    return SnowReport.new({report_id: this.report_id})
+  end
+
+  # attr_accessor :report
 
   # after_initialize do
   #   self.report = self.generateReport

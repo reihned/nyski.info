@@ -1,21 +1,30 @@
 <h1>Trip Name: <%= @trip.name %></h1>
 <% if current_user.id == @trip.creator_id %>
 	<%= link_to "edit trip", edit_trip_path(@trip) %>
-	<%= link_to "remove trip", @trip, method: :delete %>            
+	<%= link_to "remove trip", @trip, method: :delete %>
 <% end %>
 <%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => @trip.id) do %>
 	<%= submit_tag "JOIN this AWESOME TRIP!" %>
 <% end %>
-<p>You're going to: <%= @trip.ski_location.name %></p>
-<p>About this trip: <%= @trip.description %></p>
-<p>Departure date: <%= @trip.start_date %></p>
-<p>Returning at: <%= @trip.end_date %></p>
-<p>Made by: <%= @trip.halibut %></p>
-<%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
-  <%= label_tag("Starting location:") %>
-  <%= text_field_tag("origin") %>
-  <%= submit_tag("Search") %>
- <% end %>
+<section class="trip information">
+	<p>You're going to: <%= @trip.ski_location.name %></p>
+	<p>About this trip: <%= @trip.description %></p>
+	<p>Departure date: <%= @trip.start_date %></p>
+	<p>Returning at: <%= @trip.end_date %></p>
+	<p>Made by: <%= @trip.halibut %></p>`
+</section>
 
-<div id="map-canvas" style="width: auto; height: 400px"></div>
-<p id="error"></p>
+<section class="trip snowReport">
+	<%= render partial: 'application/snowreportshort', locals: { snowReport: @trip.ski_location.snow_report }%>
+</section>
+
+<section class="map directions">
+	<%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
+	  <%= label_tag("Starting location:") %>
+	  <%= text_field_tag("origin") %>
+	  <%= submit_tag("Search") %>
+	 <% end %>
+
+	<div id="map-canvas" style="width: auto; height: 400px"></div>
+	<p id="error"></p>
+</section>
