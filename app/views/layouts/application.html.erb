@@ -10,28 +10,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <%= image_tag "nyski_logo.png" %>
+  <header class="row">
+    <div class="two columns"><a href="/"><%= image_tag "nyski_logo.png" %></a></div>
+		<nav class="ten columns">
+			<div class="four columns u-pull-left">
+				<% if !current_user %>
+					<div><%= link_to "Login", new_user_path %></div>
+				<% else %>
+					<div><%= link_to "Your Profile", user_path(current_user.id) %></div>
+				<% end %>
+				<div><%= link_to "Explore Trips!", trips_path %></div>
+				<div><%= link_to "Create Your Own Trip!", new_trip_path %></div>
+			</div>
+			<div class="four columns u-pull-right">
+				<% if current_user %>
+					<div><%= current_user.email %></div>
+					<div><%= link_to 'Log-Out', login_path, method: :delete %></div>
+				<% end %>
+			</div>
+		</nav>
   </header>
-  <nav>
-    <ul class="nav-navbar">
-      <% if !current_user %>
-        <li><%= link_to "Login", new_user_path %></li>
-      <% else %>
-        <li><%= link_to "Your Profile", user_path(current_user.id) %></li>
-      <% end %>
-      <li><a href="/">Find a Mountain Near You!</a></li>
-      <li><%= link_to "Explore Trips!", trips_path %></li>
-      <li><%= link_to "Create Your Own Trip!", new_trip_path %></li>
-    </ul>
-  </nav>
 
-	<% if current_user %>
-		<%= current_user.email %>
-	<% end %>
-  <%= yield %>
-	<% if current_user %>
-		<%= link_to 'Log-Out', login_path, method: :delete %>
-	<% end %>
+
+	<section class="row offset-by-one" id="content">
+  	<%= yield %>
+	</section>
+	<footer class='footer'>
+		<div>NYSki.info, your social ski trip planner</div>
+		<div class='teamCredit'>Product of Tripping Donkeys: Judith Dinowitz, Andrew Clarke, Raymond Chiu,Vienne Chen, Jonathan Eddy</div>
+	</footer>
 </body>
 </html>

@@ -10,6 +10,63 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require 'normalize'
+ *= require 'skeleton'
  *= require_tree .
  *= require_self
  */
+
+BODY{
+  background: grey;
+  color: white;
+}
+a,
+a:link,
+a:active,
+a:visited,
+a:hover {
+    color:           white;
+    text-decoration: none;
+}
+
+.searchski{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.titleBar{
+  background-color: black;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.footer{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+.teamCredit{
+  font-size: xx-small;
+}
+
+.search-vert-center{
+  margin-top: 2%;
+}
+
+.searchski{
+  margin-top: 15%;
+  margin-bottom: 20%;
+}
+
+input[type=text]{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 1px;
+}
+input[type=text]#origin{
+  width: 80%;
+}
+
+input[type=submit]{
+  color: black;
+  background-color: #F8E71C;
+  border-radius: 1px;
+}

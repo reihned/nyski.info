@@ -1,19 +1,22 @@
-<%= form_tag("/search", method: "post", oninput: "rangeOut.value=search_range.value") do %>
-  <h3> Search for a Ski Location near you to plan a trip </h3>
-  <p>
-    <%= label_tag(:origin, "Address or Zip Code: ") %>
-  <p>
-  </p>
-    <%= text_area_tag(:origin) %>
-  </p>
-  <p>
-    <%= label_tag(:range, "Range: ") %>
-    <%= range_field(:search, :range, value: (@currentRange || 50), in: (@currentRange || 50)..500, step: 10) %>
-    <!-- <%= number_field(:search, :range, value: 50, in: 50..500, step: 10) %> -->
-    <!-- <input type="range" id="searchRange" name="searchRange" min="50" max="500"> -->
-    <output name="rangeOut" for="searchRange"><%= (@currentRange || 50) %></output><label> miles</label>
-  </p>
-  <p>
-    <%= submit_tag("Search") %>
-  </p>
-<% end %>
+<center class="searchski eight columns offset-by-two">
+  <%= form_tag("/search", method: "post", oninput: "rangeOut.value=search_range.value") do %>
+    <h5 class="titleBar row"> Search for a Ski Location near you to plan a trip </h5>
+    <div class="row">
+      <div class="one-third column search-vert-center">
+        <%= text_field_tag(:origin,"Enter Zip code") %>
+      </div>
+      <center class="one-third column">
+        <%= label_tag(:range, "Range: ") %>
+        <%= range_field(:search, :range, value: (@currentRange || 50), in: (@currentRange || 50)..500, step: 10) %>
+        <!-- <%= number_field(:search, :range, value: 50, in: 50..500, step: 10) %> -->
+        <!-- <input type="range" id="searchRange" name="searchRange" min="50" max="500"> -->
+        <div class="row">
+          <output name="rangeOut" for="searchRange"><%= (@currentRange || 50) %></output> miles
+        </div>
+      </center>
+      <div class="one-third column search-vert-center">
+        <%= submit_tag("Search") %>
+      </div>
+    </div>
+  <% end %>
+</center>
