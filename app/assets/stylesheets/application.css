@@ -88,20 +88,12 @@ a:hover {
   background-color: rgba(0,0,0,0.5);
   margin-top: 5%;
 }
-
-input[type=text]{
-  background-color: black;
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 1px;
-}
-
-input[type=password]{
-  background-color: black;
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 1px;
-}
-
-input[type=email]{
+textarea,
+select,
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date]{
   background-color: black;
   background-color: rgba(0,0,0,0.5);
   border-radius: 1px;
