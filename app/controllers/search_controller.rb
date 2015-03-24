@@ -1,9 +1,11 @@
 # class SearchController < ActionController::Base
 class SearchController < ApplicationController
 
+  def index
+  end
+
   def new
     # GET new search
-
   end
 
   def create
@@ -18,7 +20,7 @@ class SearchController < ApplicationController
     start = Location.new(address: params["origin"])
     @currentRange = params["search"]["range"].to_i
     @skiLocations = SkiLocation.within(@currentRange, :origin => start)
-    render :new
+    render :index
   end
 
   def show
@@ -27,7 +29,6 @@ class SearchController < ApplicationController
       render 'trips/new'
       session[:search_id] = nil
     else
-      Pry.start(binding)
       session[:search_id] = params[:id]
       redirect_to new_user_path
     end

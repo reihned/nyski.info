@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/login' => :login, controller: :users
   delete '/login' => :logout, controller: :users
 
-  resources :search, only: [:new, :create, :show]
+  resources :search, only: [:index, :new, :create, :show]
 
   resources :welcome, only: [:index]
 

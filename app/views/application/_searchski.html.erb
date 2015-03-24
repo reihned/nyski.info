@@ -3,15 +3,15 @@
     <h5 class="titleBar row"> Search for a Ski Location near you to plan a trip </h5>
     <div class="row">
       <div class="one-third column search-vert-center">
-        <%= text_field_tag(:origin,"Enter Zip code") %>
+        <%= text_field_tag(:origin,"", {placeholder: "Enter Zip code"}) %>
       </div>
       <center class="one-third column">
         <%= label_tag(:range, "Range: ") %>
-        <%= range_field(:search, :range, value: (@currentRange || 50), in: (@currentRange || 50)..500, step: 10) %>
+        <%= range_field(:search, :range, value: (@currentRange || 100), in: (@currentRange || 100)..500, step: 10) %>
         <!-- <%= number_field(:search, :range, value: 50, in: 50..500, step: 10) %> -->
         <!-- <input type="range" id="searchRange" name="searchRange" min="50" max="500"> -->
         <div class="row">
-          <output name="rangeOut" for="searchRange"><%= (@currentRange || 50) %></output> miles
+          <output name="rangeOut" for="searchRange"><%= (@currentRange || 100) %></output> miles
         </div>
       </center>
       <div class="one-third column search-vert-center">

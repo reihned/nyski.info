@@ -1,20 +1,20 @@
 <!-- expecting skiLocation -->
 
 <div class="ski location" id="skiLocation<%= skiLocation.id %>">
-  <h3><%= skiLocation.name %></h3>
-  <p>
+  <h3 class="titleBar"><%= skiLocation.name %></h3>
+  <p class="margin-left">
     <strong>Address: </strong>
     <span class="address">
       <%= skiLocation.address %>
     </span>
   </p>
-  <p>
+  <p class="margin-left">
     <strong>Url: </strong>
     <a class="url" href="<%= skiLocation.url %>">
-      <%= skiLocation.url || skiLocation.name %>
+      <%= skiLocation.url || "no website on file" %>
     </a>
   </p>
-  <p>
+  <p class="margin-left">
     <a href="/search/<%= skiLocation.id %>" class="button select">
       Select this location
     </a>
