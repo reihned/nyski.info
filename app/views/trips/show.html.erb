@@ -1,30 +1,42 @@
-<h1>Trip Name: <%= @trip.name %></h1>
-<% if current_user.id == @trip.creator_id %>
-	<%= link_to "edit trip", edit_trip_path(@trip) %>
-	<%= link_to "remove trip", @trip, method: :delete %>
-<% end %>
-<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => @trip.id) do %>
-	<%= submit_tag "JOIN this AWESOME TRIP!" %>
-<% end %>
-<section class="trip information">
-	<p>You're going to: <%= @trip.ski_location.name %></p>
-	<p>About this trip: <%= @trip.description %></p>
-	<p>Departure date: <%= @trip.start_date %></p>
-	<p>Returning at: <%= @trip.end_date %></p>
-	<p>Made by: <%= @trip.halibut %></p>`
-</section>
 
-<section class="trip snowReport">
-	<%= render partial: 'application/snowreportshort', locals: { snowReport: @trip.ski_location.snow_report }%>
-</section>
+<div class="row margin-top bg-black-05 ten columns offset-by-one">
+	<h1 class="titleBar"> <%= @trip.name %></h1>
+	<div class="row">
+		<section class="trip information four columns offset-by-one">
+			<div class="row">
+				<p>Selected Location: <br> <%= @trip.ski_location.name %></p>
+				<p>About this trip: <br><%= @trip.description %></p>
+				<p>Departure date: <br><%= @trip.start_date %></p>
+				<p>Returning at: <br><%= @trip.end_date %></p>
+				<p>Made by: <br><%= @trip.halibut %></p>
+			</div>
+			<div class="row">
+				<% if current_user.id == @trip.creator_id %>
+					<%= link_to "edit trip", edit_trip_path(@trip) %>
+					<%= link_to "remove trip", @trip, method: :delete %>
+				<% end %>
+				<%= form_tag("/invitations", id:"create-invitation", :method => "get", :'trip_id' => @trip.id) do %>
+					<%= submit_tag "RSVP" %>
+				<% end %>
+			</div>
+		</section>
 
-<section class="map directions">
-	<%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
-	  <%= label_tag("Starting location:") %>
-	  <%= text_field_tag("origin") %>
-	  <%= submit_tag("Search") %>
-	 <% end %>
+		<section class="trip snowReport six columns">
+			<%= render partial: 'application/snowreportshort', locals: { snowReport: @trip.ski_location.snow_report }%>
+		</section>
+	</div>
 
-	<div id="map-canvas" style="width: auto; height: 400px"></div>
-	<p id="error"></p>
-</section>
+	<section class="map directions row margin-top">
+		<div class="ten columns offset-by-one">
+			<%= form_tag("/trips", method: "get", id:"origin-form", :'destination' => @trip.ski_location.address) do %>
+				<%= label_tag("Starting location:") %>
+				<%= text_field_tag("origin") %>
+				<%= submit_tag("Map Me!") %>
+			<% end %>
+
+			<div id="map-canvas" style="width: auto; height: 400px"></div>
+			<p id="error"></p>
+		</div>
+	</section>
+
+</div>

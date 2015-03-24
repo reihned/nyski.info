@@ -11,7 +11,7 @@ $(function() {
   		})
   	}
 	 });
-  
+
   $('#trips-ul').on('click', '.join', function(e) {
   	e.preventDefault();
   	trip_id = this.parentElement.id;
@@ -73,7 +73,7 @@ var renderTrip = function(trip) {
 var renderJoinButton = function($ele){
 	var $tripsUl = $('#trips-ul');
 	var joinButton = $('<button class="join">');
-	joinButton.html("JOIN EL TRIP");
+	joinButton.html("RSVP");
 	$ele.append(joinButton);
 }
 

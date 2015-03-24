@@ -40,6 +40,9 @@ html, body {
   opacity: .4;
   z-index: -1;
 }
+ul{
+  list-style-type: none;
+}
 
 a,
 a:link,
@@ -108,6 +111,7 @@ input[type=submit]{
   background-color: #F8E71C;
   border-radius: 1px;
 }
+.join,
 .button,
 .button:link,
 .button:active,

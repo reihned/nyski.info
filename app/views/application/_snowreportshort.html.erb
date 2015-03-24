@@ -1,17 +1,15 @@
 <!-- expecting snowReport model -->
 <div class="snowReport">
-  <h2>Snow Report for <%= snowReport.resort_name %></h2>
-  <section class="weather">
-    <h3>Weather</h3>
+  <h5>Snow Report</h5>
+  <section class="weather row">
     <% snowReport.weather.each do |weatherDay| %>
-      <article class="day">
-        <h4><%= weatherDay[:day] %></h4>
+      <article class="day two columns">
+        <strong><%= weatherDay[:day] %></strong>
         <div class="temperature">
-          <h5>Temperature</h5>
-          <p>
+          <strong>Temp</strong>
+          <p class="margin-top">
             High: <%= weatherDay[:high] %>
-          </p>
-          <p>
+          <br>
             Low: <%= weatherDay[:low] %>
           </p>
         </div>
@@ -19,7 +17,7 @@
     <% end %>
   </section>
   <section class="trailStatus">
-    <h3>Trail Status</h3>
+    <strong>Trail Status</strong>
     <article class="trails">
       <p>
         Trails open: <%= snowReport.trails %>
@@ -31,7 +29,7 @@
     </article>
   </section>
   <section class="surfaceStatus">
-    <h3></h3>
+    <h5></h5>
     <p>
     </p>
   </section>

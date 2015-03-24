@@ -32,7 +32,7 @@ class SnowReport < ActiveRecord::Base
     weather = [ "Today", "Tomorrow", "DayAfterTomorrow", "Day4", "Day5"]
     self.weather = weather.map do |day|
       day = {
-        day:        day.gsub(/(?<x>([A-Z]|\d))/, ' \k<x>').lstrip,
+        day:        day.gsub(/(?<x>([A-Z]|\d))/, '\k<x>').lstrip.gsub("AfterTomorrow","3").gsub("Tomorrow","Day2"),
         low:        reportFull["weather#{day}_Temperature_Low"],
         high:       reportFull["weather#{day}_Temperature_High"],
         condition:  reportFull["weather#{day}_Condition"]
