@@ -26,7 +26,6 @@ html, body {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(image_path('picjumbo.com_DSC_3274-b.jpg')) center center no-repeat;
   background-size: cover;
   z-index: -2;
 }
