@@ -4,6 +4,15 @@
  <%= @user.email %>
 </p>
 
+
+<% @user.invitations.each do |invitation| %>
+	<h2><%= invitation.trip.name %></h2>
+	<p><%= invitation.trip.description %></p>
+	<p><%= invitation.trip.ski_location.name %></p>
+	<p><%= invitation.trip.start_date %></p>
+	<p><%= invitation.trip.end_date %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% if current_user.admin? %>
 	<%= link_to 'Add new location', new_ski_location_path %> |

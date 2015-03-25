@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
   	unless current_user
-  	redirect_to login_path, notice: "You need to login!"
+  	redirect_to new_user_path, notice: "You need to login!"
   	end
   end
 

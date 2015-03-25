@@ -2,24 +2,36 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
 	def index
-    if current_user
-  		@trips = Trip.all
-  		results = []
-  		@trips.map do |trip|
-  			result = {
-  				id: trip.id,
-  				name: trip.name,
-  				description: trip.description,
-  				ski_location_name: trip.ski_location.name,
-  				start_date: trip.start_date,
-  				end_date: trip.end_date,
-  				invitation: trip.invitations.find_by_user_id(current_user.id)
-  			}
-  			results << result
-      end
-    else
-        redirect_to '/'
-    end
+		@trips = Trip.all
+		results = []
+
+
+		@trips.map do |trip|
+			if !current_user
+					result = {
+					id: trip.id,
+					name: trip.name,
+					description: trip.description,
+					ski_location_name: trip.ski_location.name,
+					start_date: trip.start_date,
+					end_date: trip.end_date,
+					invitation: nil
+				}
+			else
+				result = {
+					id: trip.id,
+					name: trip.name,
+					description: trip.description,
+					ski_location_name: trip.ski_location.name,
+					start_date: trip.start_date,
+					end_date: trip.end_date,
+					invitation: trip.invitations.find_by_user_id(current_user.id)
+				}
+			end
+			results << result
+
+
+		end
 		respond_to do |format|
       format.html { render :index }
       format.json { render json: results }

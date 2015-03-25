@@ -28,7 +28,10 @@ $(function() {
   		success: function(data) {
   			console.log(data);
   			renderTrip(data);
-  		}
+  		},
+      error: function(){
+        window.location.href = "/users/new";
+      }
   	})
   })
 
