@@ -9,6 +9,12 @@
     </span>
   </p>
   <p class="margin-left">
+    <strong>Description: </strong>
+    <div>
+      <%= skiLocation.description || "pending" %>
+    </div>
+  </p>
+  <p class="margin-left">
     <strong>Url: </strong>
     <a class="url" href="<%= skiLocation.url %>">
       <%= skiLocation.url || "no website on file" %>
