@@ -13,11 +13,16 @@
 					:selected => @ski_location_id %>
 			</div>
 			<div class="four columns offset-by-two">
-				<%= form.label :start_date %>
-				<%= form.date_field :start_date %>
-				<%= form.label :end_date %>
-				<%= form.date_field :end_date %><%= form.submit "Create" %>
-				<%= button_to 'Cancel', user_path(current_user.id), method: :get %>
+				<div class="row">
+					<%= form.label :start_date %>
+					<%= form.date_field :start_date %>
+					<%= form.label :end_date %>
+					<%= form.date_field :end_date %>
+				</div>
+				<div class="row">
+					<%= form.submit "Create" %><br>
+					<%= button_to 'Cancel', user_path(current_user.id), method: :get %>
+				</div>
 			</div>
 	  <% end %>
 	</div>
