@@ -19,9 +19,9 @@
 					<div><%= link_to "Login", new_user_path %></div>
 				<% else %>
 					<div><%= link_to "Your Profile", user_path(current_user.id) %></div>
+					<div><%= link_to "Explore Trips!", trips_path %></div>
+					<div><%= link_to "Create Your Own Trip!", new_trip_path %></div>
 				<% end %>
-				<div><%= link_to "Explore Trips!", trips_path %></div>
-				<div><%= link_to "Create Your Own Trip!", new_trip_path %></div>
 			</div>
 			<div class="four columns u-pull-right">
 				<% if current_user %>
