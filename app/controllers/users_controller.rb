@@ -6,19 +6,22 @@ class UsersController < ApplicationController
 
   def login
   @user = User.find_by_email(params[:email])
-   if @user && @user.authenticate(params[:password])
-     session[:user_id] = @user.id
-     redirect_to user_path(@user)
-   else
-     render :new, notice: 'Invalid Login'
-   end
- end
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+       if session[:search_id]
+         redirect_to new_trip_path
+       else
+         redirect_to user_path(@user)
+       end
+    else
+      render :new, notice: 'Invalid Login'
+    end
+  end
 
- def logout
-   reset_session
-   redirect_to new_user_path, notice: 'You have been logged out'
- end
-
+  def logout
+    reset_session
+    redirect_to new_user_path, notice: 'You have been logged out'
+  end
 
   # GET /users/1
   # GET /users/1.json
@@ -50,7 +53,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        if session[:search_id]
+          format.html { redirect_to "/search/#{session[:search_id]}" }
+        else
+          format.html { redirect_to user_path(@user) }
+        end
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -78,7 +85,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to new_user_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to new_user_path, notice: 'User was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -91,7 +98,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def must_be_admin

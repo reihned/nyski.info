@@ -1,16 +1,24 @@
-<h1>New User</h1>
+<div class="row">
+<center class="bg-black-05 eight columns offset-by-two margin-top">
+	<h3 class="titleBar">New User</h3>
+	<%= form_for(@user) do |form| %>
+		<%= render form %>
+		<%= form.submit "create" %>
+	<% end %>
+</center>
+</div>
 
-<%= form_for(@user) do |form| %>
-	<%= render form %>
-	<%= form.submit "create" %>
-<% end %>
-
-<h1>Log In</h1>
+<div class="row">
+<center class="bg-black-05 eight columns offset-by-two margin-top">
+	<h3 class="titleBar">Log In</h3>
   <%= form_tag login_path, method: 'post' do |form| %>
 		<%= label_tag :email %>
 		<%= text_field_tag :email, params[:email]  %>
 		<%= label_tag :password %>
 		<%= password_field_tag :password, params[:login]  %>
-		<%= submit_tag 'Log In' %>
+		<p>
+			<%= submit_tag 'Log In' %>
+		</p>
 	<% end %>
-
+</center>
+</div>

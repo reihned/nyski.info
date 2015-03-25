@@ -1,0 +1,7 @@
+<% if @skiLocations %>
+<div class="results  nine columns offset-by-three">
+  <% @skiLocations.each do |skiLocation| %>
+    <%= render partial: 'application/searchresults', locals: { skiLocation: skiLocation }%>
+  <% end %>
+</div>
+<% end %>

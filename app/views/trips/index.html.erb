@@ -1,12 +1,8 @@
-<h1>Show Available Trips</h1>
-
-<% @trips.each do |trip| %>
-	<% if trip.status == 'pending' %>
-		<h2><%= trip.name %></h2>
-		<p><%= trip.description %></p>
-		<p><%= trip.start_date %></p>
-		<p><%= trip.end_date %></p>
-		<p><%= trip.ski_location.name %></p>
-		<p><%= link_to 'Show', trip_path(trip) %></p>
-	<% end %>
-<% end %>
+<div class="ten columns offset-by-one bg-black-05 margin-top">
+  <h3 class="titleBar">All Available Trips</h3>
+  <!-- renders data from invitations.js -->
+  <div class="ten columns offset-by-one">
+    <ul id="trips-ul">
+    </ul>
+  </div>
+</div>

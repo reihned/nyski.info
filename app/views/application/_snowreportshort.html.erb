@@ -1,0 +1,42 @@
+<!-- expecting snowReport model -->
+<div class="snowReport">
+  <h5>Snow Report</h5>
+  <section class="weather row">
+    <% snowReport.weather.each do |weatherDay| %>
+      <article class="day two columns">
+        <strong><%= weatherDay[:day] %></strong>
+        <div class="temperature">
+          <strong>Temp</strong>
+          <p class="margin-top">
+            High: <%= weatherDay[:high] %>
+          <br>
+            Low: <%= weatherDay[:low] %>
+          </p>
+        </div>
+      </article>
+    <% end %>
+  </section>
+  <section class="trailStatus">
+    <strong>Trail Status</strong>
+    <article class="trails">
+      <p>
+        Trails open: <%= snowReport.trails %>
+    </article>
+    <article class="lifts">
+      <p>
+        Lifts open: <%= snowReport.lifts %>
+      </p>
+    </article>
+  </section>
+  <section class="surfaceStatus">
+    <h5></h5>
+    <p>
+    </p>
+  </section>
+  <section class="accreditation">
+    <!-- gsub to fix depreciated link-->
+    <a href="<%= snowReport.source.gsub("index.php","en") %>">
+      <image src="http://www.snocountry.com/images/snocountry_logo.png" >
+    </a>
+  </section>
+</div>

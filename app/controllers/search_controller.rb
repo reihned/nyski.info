@@ -1,9 +1,11 @@
-class SearchController < ActionController::Base
-# class SearchController < ApplicationController
+# class SearchController < ActionController::Base
+class SearchController < ApplicationController
+
+  def index
+  end
 
   def new
     # GET new search
-
   end
 
   def create
@@ -15,11 +17,21 @@ class SearchController < ActionController::Base
     # "commit"=>"Search",
     # "controller"=>"search",
     # "action"=>"create"}
-
     start = Location.new(address: params["origin"])
-    searchRange = params["search"]["range"]
-    @skiLocations = SkiLocation.within(searchRange, :origin => start)
-
-    render :new
+    @currentRange = params["search"]["range"].to_i
+    @skiLocations = SkiLocation.within(@currentRange, :origin => start)
+    render :index
   end
+
+  def show
+    @trip = Trip.new({ski_location_id: params[:id]})
+    if current_user
+      render 'trips/new'
+      session[:search_id] = nil
+    else
+      session[:search_id] = params[:id]
+      redirect_to new_user_path
+    end
+  end
+
 end

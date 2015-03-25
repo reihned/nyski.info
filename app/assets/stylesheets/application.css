@@ -10,6 +10,120 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require 'normalize'
+ *= require 'skeleton'
  *= require_tree .
  *= require_self
  */
+
+html, body {
+  color: white;
+}
+
+.bg{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -2;
+}
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom,#000000,#888888);
+  opacity: .4;
+  z-index: -1;
+}
+ul{
+  list-style-type: none;
+}
+
+a,
+a:link,
+a:active,
+a:visited,
+a:hover {
+    color:           white;
+    text-decoration: none;
+}
+
+.searchski{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.bg-black-05{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.titleBar{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.footer{
+  margin-top: 5%;
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+}
+.teamCredit{
+  font-size: xx-small;
+}
+
+.search-vert-center{
+  margin-top: 2%;
+}
+
+.searchski{
+  margin-top: 15%;
+  margin-bottom: 20%;
+}
+
+.location{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+  margin-top: 5%;
+}
+textarea,
+select,
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date]{
+  background-color: black;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 1px;
+}
+
+input[type=text]#origin{
+  width: 80%;
+}
+
+input[type=submit]{
+  color: black;
+  background-color: #F8E71C;
+  border-radius: 1px;
+}
+.join,
+.button,
+.button:link,
+.button:active,
+.button:visited,
+.button:hover {
+  color: black;
+  background-color: #F8E71C;
+  border-radius: 1px;
+  text-decoration: none;
+}
+.margin-left{
+  margin-left: 5%;
+}
+.margin-top{
+  margin-top: 5%;
+}
