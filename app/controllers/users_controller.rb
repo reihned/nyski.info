@@ -14,6 +14,7 @@ class UsersController < ApplicationController
          redirect_to user_path(@user)
        end
     else
+      @user = User.new
       render :new, notice: 'Invalid Login'
     end
   end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path
     end
-  end 
+  end
 
   # GET /users/new
   def new
